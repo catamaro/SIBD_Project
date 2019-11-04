@@ -1,0 +1,4 @@
+DROP IF EXISTS DATABASE proj_part2;
+
+CREATE DATABASE proj_part2;
+
