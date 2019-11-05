@@ -1,16 +1,16 @@
 /*INSERT EMPLOYEE*/
-INSERT INTO employee VALUES ('628-22-9602', 'Cassius Lydiatt', '1967-8-31', 'Weeping Birch', 'Banquero', '3303', 'GR55 2129 201W VPZF 9YEU I2SS FJI', '€1164,12');
-INSERT INTO employee VALUES ('381-06-1913', 'Cullin Yakushkev', '1995-3-14', 'Luster', 'Dete', '3303', 'FR77 4624 0548 32ME NK7I 6NL1 V41', '€664,71');
-INSERT INTO employee VALUES ('726-88-9933', 'Margery Doldon', '1950-8-10', 'Becker', 'Bojen Kulon', '6200-759', 'KZ28 5178 B732 RFEM 7ETX', '€2689,50');
-INSERT INTO employee VALUES ('253-49-1355', 'Myrvyn Windram', '1974-12-2', 'Northfield', 'Malian', '6250-049', 'GT85 KLBQ LMOY 4VYW 2BNJ GDGR BVCX', '€1432,07');
-INSERT INTO employee VALUES ('164-05-0156', 'Orella Simoni', '1968-7-11', 'Old Shore', 'Santa Eulalia', '6300-125', 'FR86 5196 4861 89WR V7OH CPTL K74', '€2860,56');
-INSERT INTO employee VALUES ('585-04-1776', 'Xever Deeming', '1977-8-23', 'Maple Wood', 'Cikandang', '1869-222', 'MR28 2395 6680 7261 0719 5549 747', '€2937,02');
-INSERT INTO employee VALUES ('611-36-6228', 'Sandor Beckwith', '1993-7-9', 'Lindbergh', 'Tibro', '543 30', 'IE48 RBOF 8838 0571 9407 04', '€1322,72');
-INSERT INTO employee VALUES ('554-01-9560', 'Arturo Cohani', '1953-6-21', 'Holy Cross', 'Vimieiro', '4705-656', 'CY78 8308 8983 CJXW TETU THRR K4NH', '€2120,73');
-INSERT INTO employee VALUES ('204-53-2647', 'Ciel Eastham', '1999-12-27', 'Meadow Ridge', 'Cikaduen', '4236', 'IT23 E861 0395 289L GKB9 LDWU P9C', '€1159,85');
-INSERT INTO employee VALUES ('120-69-0626', 'Aubrey Cokayne', '1994-1-2', 'Mitchell', 'Luzino', '84-242', 'AZ56 PKZV VKLQ 4CA9 TB0H GADX YIWY', '€2967,18');
-INSERT INTO employee VALUES ('604-24-1006', 'Jane SweetTooth', '1990-5-a', 'Westport', 'Biguaçu', '88160-000', 'BE53 3506 1083 4657', '€2705,35');
-INSERT INTO employee VALUES ('433-46-4246', 'Therine Antram', '1954-3-1', 'Shelley', 'Trollhättan', '461 42', 'BE84 2697 6957 2794', '€619,04');
+INSERT INTO employee VALUES ('628-22-9602', 'Cassius Lydiatt', '1967-8-31', 'Weeping Birch', 'Banquero', '3303', 'GR55 2129 201W VPZF 9YEU I2SS FJI', 1164.12);
+INSERT INTO employee VALUES ('381-06-1913', 'Cullin Yakushkev', '1995-3-14', 'Luster', 'Dete', '3303', 'FR77 4624 0548 32ME NK7I 6NL1 V41', 664.71);
+INSERT INTO employee VALUES ('726-88-9933', 'Margery Doldon', '1950-8-10', 'Becker', 'Bojen Kulon', '6200-759', 'KZ28 5178 B732 RFEM 7ETX', 2689.50);
+INSERT INTO employee VALUES ('253-49-1355', 'Myrvyn Windram', '1974-12-2', 'Northfield', 'Malian', '6250-049', 'GT85 KLBQ LMOY 4VYW 2BNJ GDGR BVCX', 1432.07);
+INSERT INTO employee VALUES ('164-05-0156', 'Orella Simoni', '1968-7-11', 'Old Shore', 'Santa Eulalia', '6300-125', 'FR86 5196 4861 89WR V7OH CPTL K74', 2860.56);
+INSERT INTO employee VALUES ('585-04-1776', 'Xever Deeming', '1977-8-23', 'Maple Wood', 'Cikandang', '1869-222', 'MR28 2395 6680 7261 0719 5549 747', 2937.02);
+INSERT INTO employee VALUES ('611-36-6228', 'Sandor Beckwith', '1993-7-9', 'Lindbergh', 'Tibro', '543 30', 'IE48 RBOF 8838 0571 9407 04', 1322.72);
+INSERT INTO employee VALUES ('554-01-9560', 'Arturo Cohani', '1953-6-21', 'Holy Cross', 'Vimieiro', '4705-656', 'CY78 8308 8983 CJXW TETU THRR K4NH', 2120.73);
+INSERT INTO employee VALUES ('204-53-2647', 'Ciel Eastham', '1999-12-27', 'Meadow Ridge', 'Cikaduen', '4236', 'IT23 E861 0395 289L GKB9 LDWU P9C', 1159.85);
+INSERT INTO employee VALUES ('120-69-0626', 'Aubrey Cokayne', '1994-1-2', 'Mitchell', 'Luzino', '84-242', 'AZ56 PKZV VKLQ 4CA9 TB0H GADX YIWY', 2967.18);
+INSERT INTO employee VALUES ('604-24-1006', 'Jane SweetTooth', '1990-5-a', 'Westport', 'Biguaçu', '88160-000', 'BE53 3506 1083 4657', 2705.35);
+INSERT INTO employee VALUES ('433-46-4246', 'Therine Antram', '1954-3-1', 'Shelley', 'Trollhättan', '461 42', 'BE84 2697 6957 2794', 619.04);
 
 /*INSERT PHONE_NUMBER*/
 INSERT INTO phone_number_employee VALUES ('628-22-9602', '+351966036154');
