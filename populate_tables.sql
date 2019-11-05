@@ -78,7 +78,7 @@ insert into trainee_doctor values ('120-69-0626', '433-46-4246');
 
 /*INSERT SUPERVISION_REPORT*/
 insert into supervision_report values ('204-53-2647', '2013-7-16', 'fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer', 4);
-insert into supervision_report values ('120-69-0626', '2005-1-2', 'congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus', 4);
+insert into supervision_report values ('120-69-0626', '2005-1-2', 'congue vivamus metus arcu adipiscing molestie insufficient at vulputate vitae nisl aenean lectus', 4);
 insert into supervision_report values ('204-53-2647', '2016-6-15', 'ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam', 2);
 insert into supervision_report values ('120-69-0626', '2017-1-4', 'aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio', 4);
 insert into supervision_report values ('204-53-2647', '2010-7-27', 'imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit', 5);
@@ -86,7 +86,7 @@ insert into supervision_report values ('120-69-0626', '2006-3-30', 'orci luctus 
 insert into supervision_report values ('204-53-2647', '2008-8-11', 'metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam', 4);
 insert into supervision_report values ('120-69-0626', '2002-4-24', 'nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing', 2);
 insert into supervision_report values ('204-53-2647', '2002-2-24', 'erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 5);
-insert into supervision_report values ('120-69-0626', '2012-7-15', 'elit sodales scelerisque mauris sit amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis', 4);
+insert into supervision_report values ('120-69-0626', '2012-7-15', 'elit sodales scelerisque mauris sit amet eros suspendisse insufficient tortor quis turpis sed ante vivamus tortor duis mattis', 4);
 
 /*INSERT APPOINTMENT*/
 insert into appointment values ('204-53-2647', '892-19-9548', '2013-7-16', 'tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse');

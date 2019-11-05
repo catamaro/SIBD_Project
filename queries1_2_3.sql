@@ -1,7 +1,4 @@
-﻿USE proj_part2;  
- 
-/*query 1*/
- 
+﻿
 SELECT c.client_VAT, c.client_name, p.phone_number
     FROM client AS c, appointment AS a, phone_number_client AS p
     WHERE c.client_VAT = p.client_VAT
@@ -20,4 +17,10 @@ SELECT c.client_VAT, c.client_name, p.phone_number
 
 /*query 2*/
 
+SELECT t.VAT_trainee, e.employee_name, e2.employee_name, report_evaluation, report_description  
+FROM employee AS e, employee AS e2, trainee_doctor AS t, supervision_report AS sr
+WHERE (sr.report_evaluation < 3 OR sr.report_description LIKE '%insufficient%')
+	AND e.employee_VAT = t.VAT_trainee
+	AND sr.VAT_trainee = t.VAT_trainee
+	AND e2.employee_VAT = t.supervisor;
 
