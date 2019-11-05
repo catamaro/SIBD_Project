@@ -22,5 +22,6 @@ FROM employee AS e, employee AS e2, trainee_doctor AS t, supervision_report AS s
 WHERE (sr.report_evaluation < 3 OR sr.report_description LIKE '%insufficient%')
 	AND e.employee_VAT = t.VAT_trainee
 	AND sr.VAT_trainee = t.VAT_trainee
-	AND e2.employee_VAT = t.supervisor;
+	AND e2.employee_VAT = t.supervisor
+ORDER BY (report_evaluation) DESC;
 
