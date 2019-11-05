@@ -25,3 +25,14 @@ WHERE (sr.report_evaluation < 3 OR sr.report_description LIKE '%insufficient%')
 	AND e2.employee_VAT = t.supervisor
 ORDER BY (report_evaluation) DESC;
 
+/*query 3*/
+
+SELECT c.client_name, c.client_city, c.client_VAT, cn.date_timestamp
+FROM client AS c, consultation AS cn, appointment AS a
+WHERE (cn.SOAP_O LIKE '%gengivitis%' OR cn.SOAP_O LIKE '%periodontis%')
+	AND a.VAT_doctor = cn.VAT_doctor
+	AND a.date_timestamp = cn.date_timestamp
+	AND c.client_VAT = a.VAT_client 
+ORDER BY(cn.date_timestamp) DESC
+LIMIT 1;
+
