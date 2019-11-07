@@ -36,7 +36,7 @@ FROM client AS c
 					ON a.VAT_doctor = cn.VAT_doctor
 					AND a.date_timestamp = cn.date_timestamp
 					GROUP BY(a.VAT_client)) AS new
-		WHERE new.SOAP_O LIKE '%gengivitis%' OR new.SOAP_O LIKE '%periodontis%');
+		WHERE new.SOAP_O LIKE '%gingivitis%' OR new.SOAP_O LIKE '%periodontitis%');
 				
 
 
