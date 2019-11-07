@@ -1,3 +1,5 @@
+﻿/***ERROR MESSAGE**/
+
 DROP PROCEDURE IF EXISTS error;
 
 DELIMITER $$
