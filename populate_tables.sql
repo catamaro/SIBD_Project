@@ -1,4 +1,4 @@
-﻿/*INSERT EMPLOYEE*/
+/*INSERT EMPLOYEE*/
 /*employee_VAT | employee_name | employee_birth_date | employee_street | employee_city | employee_zip | employee_IBAN | employee_salary |*/
 INSERT INTO employee VALUES ('628-22-9602', 'Cassius Lydiatt', '1967-8-31', 'Weeping Birch', 'Banquero', '3303', 'GR55 2129 201W VPZF 9YEU I2SS FJI', 1164.12);
 INSERT INTO employee VALUES ('381-06-1913', 'Cullin Yakushkev', '1995-3-14', 'Luster', 'Dete', '3303', 'FR77 4624 0548 32ME NK7I 6NL1 V41', 664.71);
@@ -56,13 +56,14 @@ insert into client values ('264-89-1889', 'Essy Skupinski', '1959-8-12', 'Schmed
 insert into client values ('842-73-0131', 'Tiphanie McSharry', '2008-9-11', 'High Crossing', 'Povorino', '397355', 'Female', null);
 insert into client values ('463-47-7696', 'Leo Lapthorn', '1957-4-6', 'Carioca', 'Ruo', '1600-610', 'Male', null);
 insert into client values ('769-62-0549', 'Justine Michurin', '2003-3-9', 'Cherokee', 'Monte Mor', '13190-000', 'Female', null);
-insert into client values ('397-12-3099', 'Cornell Felce', '1965-12-8', 'Butternut', 'Ryczów', '34-115', 'Male', null);
+insert into client values ('397-12-3099', 'Cornell Felce', '1965-12-8', 'Butternut', 'Ryczow', '34-115', 'Male', null);
 insert into client values ('727-22-5453', 'Raynor Gildersleaves', '1965-1-23', 'Ryan', 'San Antonio', '6407', 'Male', null);
-insert into client values ('152-70-3658', 'Baudoin Haile', '1961-10-3', 'Hagan', 'Malko Tŭrnovo', '8359', 'Male', null);
+insert into client values ('152-70-3658', 'Baudoin Haile', '1961-10-3', 'Hagan', 'Malko Turnovo', '8359', 'Male', null);
 insert into client values ('759-92-5791', 'Bibbie Aldine', '1961-9-12', 'Esch', 'Bagong Sikat', '4903', 'Female', null);
 
-UPDATE client SET client_age = (SELECT YEAR(CURDATE()) - YEAR(client_birth_date) - (DATE_FORMAT(client_birth_date, '%m%d') < DATE_FORMAT(CURDATE(), '%m%d'))
-				FROM client);
+UPDATE client SET client_age = 
+	YEAR(CURDATE()) - YEAR(client_birth_date) - (DATE_FORMAT(client_birth_date, '%m%d') < DATE_FORMAT(CURDATE(), '%m%d'))
+	WHERE client_age IS NULL;
 
 /*INSERT PHONE CLIENT*/ 
 insert into phone_number_client values ('892-19-9548', '+351918640458');
