@@ -32,12 +32,12 @@ CREATE TABLE employee (
 
 	employee_VAT						VARCHAR(255)		NOT NULL,
 	employee_name						VARCHAR(255)		NOT NULL,
-	employee_birth_date					DATE				NOT NULL,
+employee_birth_date					    DATE				NOT NULL,
 	employee_street						VARCHAR(255)		NOT NULL,
 	employee_city						VARCHAR(255)		NOT NULL, /*longest city name: Taumatawhakatangi­hangakoauauotamatea­turipukakapikimaunga­horonukupokaiwhen­uakitanatahu*/
 	employee_zip						VARCHAR(255)		NOT NULL,
 	employee_IBAN						VARCHAR(255)		NOT NULL,
-	employee_salary						VARCHAR(255)		NOT NULL,
+	employee_salary						FLOAT				NOT NULL,
 	PRIMARY KEY(employee_VAT),
 	UNIQUE(employee_IBAN),
 	CHECK (employee_salary >= 0)
