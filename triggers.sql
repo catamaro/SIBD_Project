@@ -1,3 +1,6 @@
+﻿USE proj_part2;
+
+
 DROP TRIGGER IF EXISTS permanent_check;
 DROP TRIGGER IF EXISTS trainee_check;
 
