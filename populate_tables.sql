@@ -10,7 +10,7 @@ INSERT INTO employee VALUES ('611-36-6228', 'Sandor Beckwith', '1993-7-9', 'Lind
 INSERT INTO employee VALUES ('554-01-9560', 'Arturo Cohani', '1953-6-21', 'Holy Cross', 'Vimieiro', '4705-656', 'CY78 8308 8983 CJXW TETU THRR K4NH', 2120.73);
 INSERT INTO employee VALUES ('204-53-2647', 'Ciel Eastham', '1999-12-27', 'Meadow Ridge', 'Cikaduen', '4236', 'IT23 E861 0395 289L GKB9 LDWU P9C', 1159.85);
 INSERT INTO employee VALUES ('120-69-0626', 'Aubrey Cokayne', '1994-1-2', 'Mitchell', 'Luzino', '84-242', 'AZ56 PKZV VKLQ 4CA9 TB0H GADX YIWY', 2967.18);
-INSERT INTO employee VALUES ('604-24-1006', 'Jane SweetTooth', '1990-5-a', 'Westport', 'Biguacu', '88160-000', 'BE53 3506 1083 4657', 2705.35);
+INSERT INTO employee VALUES ('604-24-1006', 'Jane SweetTooth', '1990-5-2', 'Westport', 'Biguacu', '88160-000', 'BE53 3506 1083 4657', 2705.35);
 INSERT INTO employee VALUES ('433-46-4246', 'Therine Antram', '1954-3-1', 'Shelley', 'Trollhattan', '461 42', 'BE84 2697 6957 2794', 619.04);
 
 /*INSERT PHONE_NUMBER*/
@@ -58,11 +58,11 @@ insert into client values ('463-47-7696', 'Leo Lapthorn', '1957-4-6', 'Carioca',
 insert into client values ('769-62-0549', 'Justine Michurin', '2003-3-9', 'Cherokee', 'Monte Mor', '13190-000', 'Female', null);
 insert into client values ('397-12-3099', 'Cornell Felce', '1965-12-8', 'Butternut', 'Ryczow', '34-115', 'Male', null);
 insert into client values ('727-22-5453', 'Raynor Gildersleaves', '1965-1-23', 'Ryan', 'San Antonio', '6407', 'Male', null);
-insert into client values ('152-70-3658', 'Baudoin Haile', '1961-10-3', 'Hagan', 'Malko Tŭrnovo', '8359', 'Male', null);
+insert into client values ('152-70-3658', 'Baudoin Haile', '1961-10-3', 'Hagan', 'Malko Turnovo', '8359', 'Male', null);
 insert into client values ('759-92-5791', 'Bibbie Aldine', '1961-9-12', 'Esch', 'Bagong Sikat', '4903', 'Female', null);
 
 /*INSERT PHONE CLIENT*/ 
-insert into phone_number_client values ('892-19-9548', '+351918640458');
+insert into phone_number_client values ('892-19-9548', '918640458');
 insert into phone_number_client values ('703-30-2993', '917518981');
 insert into phone_number_client values ('264-89-1889', '919071606');
 insert into phone_number_client values ('842-73-0131', '917072540');
@@ -99,7 +99,7 @@ insert into supervision_report values ('120-69-0626', '2012-7-15', 'elit sodales
 /*INSERT APPOINTMENT*/
 /*('Vat_Doctor', 'VAT_Client', 'date_timestamp', 'appointment_description')*/
 insert into appointment values ('204-53-2647', '892-19-9548', '2013-7-16', 'tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse');
-insert into appointment values ('120-69-0626', '892-19-9548'/*703-30-2993*/, '2005-1-2',  'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio');
+insert into appointment values ('120-69-0626', '892-19-9548', '2005-1-2',  'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio');
 insert into appointment values ('604-24-1006', '264-89-1889', '2016-6-15', 'lectus aliquam sit amet diam in magna bibendum imperdiet nullam');
 insert into appointment values ('433-46-4246', '842-73-0131', '2017-1-4',  'sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique');
 insert into appointment values ('204-53-2647', '463-47-7696', '2010-7-27', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
@@ -154,7 +154,7 @@ insert into diagnostic_code values ('0PWK47Z', 'sagittis dui vel nisl duis ac ni
 insert into diagnostic_code values ('0JH630Z', 'nulla pede ullamcorper augue a suscipit nulla elit ac nulla');
 insert into diagnostic_code values ('09N3XZZ', 'etiam vel augue vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia');
 insert into diagnostic_code values ('037Y356', 'morbi non quam nec dui rutrum nulla tellus in sagittis dui');
-insert into diagnostic_code values ('0SH544Z', 'gingivitis sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper est quam');
+insert into diagnostic_code values ('0SH544Z', 'gingivitis');
 insert into diagnostic_code values ('0CWY8DZ', 'habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent');
 
 
@@ -230,5 +230,5 @@ insert into teeth values (1, 6,'top right cuspid,');
 insert into procedure_charting values ('Extraction',							'204-53-2647', '2013-7-16', 3, 1,'descp1', 2);
 insert into procedure_charting values ('maxillary molar periapical radiograph',	'120-69-0626', '2005-1-2', 	2, 8,'descp2', 3);
 insert into procedure_charting values ('Gum Surgery',							'604-24-1006', '2016-6-15',1, 6,'descp3', 5);
-insert into procedure_charting values ('Sealants',								'433-46-4246', '2017-1-4', 3, 1,'descp4', 8);
-insert into procedure_charting values ('Teeth Whitening',						'204-53-2647', '2010-7-27',2, 8,'descp5', 4);
+insert into procedure_charting values ('Sealants',								'433-46-4246', '2017-1-4', 3, 1,'descp4', 2);
+insert into procedure_charting values ('Teeth Whitening',						'204-53-2647', '2010-7-27',2, 8,'descp5', 5);
