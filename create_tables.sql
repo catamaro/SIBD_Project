@@ -110,22 +110,22 @@ CREATE TABLE permanent_doctor (
 CREATE TABLE trainee_doctor (
 
 	VAT_trainee							VARCHAR(255)		NOT NULL,
-	supervisor							VARCHAR(255)		NOT NULL,
+	supervisor							VARCHAR(255),
 	PRIMARY KEY(VAT_trainee),
 	FOREIGN KEY (VAT_trainee)							REFERENCES		doctor(VAT_doctor) ON UPDATE CASCADE ON DELETE CASCADE,
-	FOREIGN KEY (supervisor)							REFERENCES		permanent_doctor(VAT_permanent) ON DELETE CASCADE SET NULL
+	FOREIGN KEY (supervisor)							REFERENCES		permanent_doctor(VAT_permanent) ON DELETE SET NULL
 
 );
 
 CREATE TABLE supervision_report (
 
-	VAT_trainee							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
-	report_description					VARCHAR(255)		NOT NULL,
+	VAT_trainee							VARCHAR(255),
+	date_timestamp							DATE				NOT NULL,
+	report_description				VARCHAR(255)		NOT NULL,
 	report_evaluation					INTEGER				NOT NULL,
 	CHECK (report_evaluation between 1 and 5),
 	PRIMARY KEY (VAT_trainee, date_timestamp),
-	FOREIGN KEY (VAT_trainee)							REFERENCES		trainee_doctor(VAT_trainee) ON UPDATE CASCADE SET NULL
+	FOREIGN KEY (VAT_trainee)							REFERENCES		trainee_doctor(VAT_trainee) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
@@ -135,7 +135,7 @@ CREATE TABLE appointment (
 	VAT_doctor							VARCHAR(255)		NOT NULL,
 	VAT_client							VARCHAR(255)		NOT NULL,
 	date_timestamp							DATE				NOT NULL,
-	appointment_description				VARCHAR(255)		NOT NULL,
+	appointment_description			VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp),
 	FOREIGN KEY (VAT_doctor)							REFERENCES		doctor(VAT_doctor) ON UPDATE CASCADE ON DELETE CASCADE,
 	FOREIGN KEY (VAT_client)							REFERENCES		client(client_VAT) ON UPDATE CASCADE ON DELETE CASCADE	
