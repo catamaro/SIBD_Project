@@ -25,6 +25,7 @@ WHERE (sr.report_evaluation < 3 OR sr.report_description LIKE '%insufficient%')
 	AND e2.employee_VAT = t.supervisor
 ORDER BY (report_evaluation) DESC;
 
+USE proj_part2;
 /*query 3*/
 SELECT c.client_name, c.client_city, c.client_VAT
 FROM client AS c 
