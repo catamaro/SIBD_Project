@@ -1,7 +1,8 @@
-CREATE VIEW dim_location_client
+DROP VIEW IF EXISTS dim_location_client;
 
-AS
+CREATE VIEW dim_location_client AS
 
-SELECT client_zip, client_city
+	SELECT DISTINCT client_zip, client_city
 
-FROM client;
+	FROM client;
+    
