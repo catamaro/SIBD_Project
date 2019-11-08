@@ -1,4 +1,4 @@
-﻿USE ist186938;
+USE ist186938;
 
 
 /* DROP ALL TABLES IF EXIST*/
