@@ -152,13 +152,13 @@ insert into appointment values ('433-46-4246', '463-47-7696', '2019-7-27', 'temp
 insert into appointment values ('433-46-4246', '769-62-0549', '2019-3-30', 'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet');
 insert into appointment values ('433-46-4246', '397-12-3099', '2019-8-11', 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel');
 insert into appointment values ('433-46-4246', '463-47-7696', '2019-4-24','phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi');
-insert into appointment values ('433-46-4246', '769-62-0549', '2019-4-24', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-4-25', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
 insert into appointment values ('433-46-4246', '397-12-3099', '2019-7-15', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
-insert into appointment values ('433-46-4246', '769-62-0549', '2019-7-16', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
-insert into appointment values ('433-46-4246', '769-62-0549', '2019-4-8', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-7-19', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-4-9', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
 insert into appointment values ('433-46-4246', '397-12-3099', '2019-11-11', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
 insert into appointment values ('433-46-4246', '842-73-0131', '2019-10-8', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
-insert into appointment values ('433-46-4246', '342-12-5861', '2019-7-16', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-7-31', 'libera me domine et morte eterna in die il la tremenda in die illa');
 insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-26', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
 insert into appointment values ('433-46-4246', '397-12-3099', '2019-4-17', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
 insert into appointment values ('433-46-4246', '342-12-5861', '2019-5-10', 'libera me domine et morte eterna in die il la tremenda in die illa');
@@ -303,9 +303,9 @@ insert into diagnostic_code values ('0CWY8DZ', 'habitasse platea dictumst aliqua
 insert into diagnostic_code values ('08J3YBZ', 'incipit lacrimarae jubilate deo dental cavities kyrie');
 insert into diagnostic_code values ('0A2SE6T', 'filius clivis punctum dental cavities podatus porrectus');
 insert into diagnostic_code values ('0J7LTW4', 'agnus dei qui tollis pecatta mundi dental cavities nobis infectious disease');
-insert into diagnostic_code values ('08J3YBZ', 'incipit lacrimarae jubilate deo dental cavities kyrie');
-insert into diagnostic_code values ('0A2SE6T', 'filius clivis punctum dental cavities podatus porrectus');
-insert into diagnostic_code values ('0J7LTW4', 'agnus dei qui tollis pecatta mundi dental cavities nobis infectious disease');
+insert into diagnostic_code values ('18J4YBZ', 'incipit lacrimarae jubilate deo dental cavities kyrie');
+insert into diagnostic_code values ('1A2SE6T', 'filius clivis punctum dental cavities podatus porrectus');
+insert into diagnostic_code values ('1J7LTW4', 'agnus dei qui tollis pecatta mundi dental cavities nobis infectious disease');
 
 /*INSERT DIAGNOSTIC_CODE_RELATION*/
 /*('ID_1', 'ID_2', '')*/
