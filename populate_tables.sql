@@ -15,7 +15,7 @@ INSERT INTO employee VALUES ('433-46-4246', 'Therine Antram', '1954-3-1', 'Shell
 
 /*INSERT PHONE_NUMBER*/
 /*employee_VAT | phone_number */
-INSERT INTO phone_number_employee VALUES ('628-22-9602', '+351966036154');
+INSERT INTO phone_number_employee VALUES ('628-22-9602', '966036154');
 INSERT INTO phone_number_employee VALUES ('381-06-1913', '966364885');
 INSERT INTO phone_number_employee VALUES ('726-88-9933', '969708865');
 INSERT INTO phone_number_employee VALUES ('253-49-1355', '962879070');
@@ -50,8 +50,8 @@ insert into nurse values ('554-01-9560');
 
 /*INSERT CLIENT*/
 /*client_VAT  | client_name | client_birth_date | client_street | client_city | client_zip | client_gender | client_age*/
-insert into client values ('892-19-9548', 'Jimmie Strettle', '1964-5-5', 'Dwight', 'Kansas City', '64187', 'Male', null); /*falta age*/
-insert into client values ('703-30-2993', 'Veronika Doughton', '1981-1-2', 'East', 'Fray Bentos', '6200-759', 'Female', null);
+insert into client values ('892-19-9548', 'Jimmie Strettle', '1964-5-5', 'Dwight', 'Kansas City', '64187', 'Male', null); 
+insert into client values ('703-30-2993', 'Veronika Doughton', '1981-1-2', 'East', 'Kansas City', '64187', 'Female', null);
 insert into client values ('264-89-1889', 'Essy Skupinski', '1959-8-12', 'Schmedeman', 'San Salvador', '6300-130', 'Female', null);
 insert into client values ('842-73-0131', 'Tiphanie McSharry', '2008-9-11', 'High Crossing', 'Povorino', '397355', 'Female', null);
 insert into client values ('463-47-7696', 'Leo Lapthorn', '1957-4-6', 'Carioca', 'Ruo', '1600-610', 'Male', null);
@@ -99,6 +99,26 @@ insert into supervision_report values ('204-53-2647', '2008-8-11', 'metus vitae 
 insert into supervision_report values ('120-69-0626', '2002-4-24', 'nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing', 2);
 insert into supervision_report values ('204-53-2647', '2002-2-24', 'erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 5);
 insert into supervision_report values ('120-69-0626', '2012-7-15', 'elit sodales scelerisque mauris sit amet eros suspendisse insufficient tortor quis turpis sed ante vivamus tortor duis mattis', 4);
+insert into supervision_report values ('204-53-2647', '2011-08-22', 'mauris', 1);
+insert into supervision_report values ('120-69-0626', '2003-07-02', 'convallis duis consequat dui nec', 2);
+insert into supervision_report values ('204-53-2647', '2015-03-25', 'suscipit ligula in', 1);
+insert into supervision_report values ('120-69-0626', '2015-05-18', 'dis parturient montes nascetur ridiculus', 5);
+insert into supervision_report values ('204-53-2647', '2004-02-03', 'sagittis sapien cum', 1);
+insert into supervision_report values ('120-69-0626', '2014-02-02', 'tellus nisi', 3);
+insert into supervision_report values ('204-53-2647', '2011-04-15', 'id', 4);
+insert into supervision_report values ('120-69-0626', '2018-12-09', 'rutrum nulla tellus in', 5);
+insert into supervision_report values ('204-53-2647', '2008-05-24', 'dui maecenas', 5);
+insert into supervision_report values ('120-69-0626', '2004-10-28', 'dictumst aliquam augue quam sollicitudin', 2);
+insert into supervision_report values ('204-53-2647', '2006-06-16', 'et magnis dis parturient montes', 2);
+insert into supervision_report values ('120-69-0626', '2016-11-26', 'tristique est et', 1);
+insert into supervision_report values ('204-53-2647', '2017-08-29', 'consectetuer eget rutrum', 5);
+insert into supervision_report values ('120-69-0626', '2000-12-11', 'vitae ipsum aliquam non', 4);
+insert into supervision_report values ('204-53-2647', '2007-05-29', 'sem fusce consequat nulla', 4);
+insert into supervision_report values ('120-69-0626', '2010-09-09', 'eget', 1);
+insert into supervision_report values ('204-53-2647', '2009-12-18', 'leo rhoncus sed vestibulum', 4);
+insert into supervision_report values ('120-69-0626', '2009-07-28', 'lacinia aenean sit amet', 1);
+insert into supervision_report values ('204-53-2647', '2002-04-04', 'rutrum neque aenean', 2);
+insert into supervision_report values ('120-69-0626', '2012-08-17', 'nec sem duis aliquam', 3);
 
 /*INSERT APPOINTMENT*/
 /*('Vat_Doctor', 'VAT_Client', 'date_timestamp', 'appointment_description')*/
@@ -110,7 +130,7 @@ insert into appointment values ('204-53-2647', '463-47-7696', '2010-7-27', 'temp
 insert into appointment values ('120-69-0626', '769-62-0549', '2006-3-30', 'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet');
 insert into appointment values ('604-24-1006', '397-12-3099', '2008-8-11', 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel');
 insert into appointment values ('433-46-4246', '463-47-7696', '2002-4-24','phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi');
-insert into appointment values ('204-53-2647', '769-62-0549', '2002-2-24', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
+insert into appointment values ('204-53-2647', '769-62-0549', '2002-4-24', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
 insert into appointment values ('120-69-0626', '397-12-3099', '2012-7-15', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
 insert into appointment values ('204-53-2647', '769-62-0549', '2015-7-16', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
 insert into appointment values ('433-46-4246', '842-73-0131', '2019-4-8', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
@@ -128,7 +148,7 @@ insert into consultation values ('204-53-2647', '2010-7-27', 'condimentum id luc
 insert into consultation values ('120-69-0626', '2006-3-30', 'tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla', 'in eleifend quam a odio in hac habitasse platea dictumst maecenas ut massa quis augue luctus', 'non velit donec diam neque vestibulum eget vulputate ut ultrices vel augue vestibulum ante ipsum', 'amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi nulla ac enim in tempor');
 insert into consultation values ('604-24-1006', '2008-8-11', 'id sapien in sapien iaculis congue vivamus metus arcu adipiscing molestie hendrerit at vulputate vitae nisl aenean lectus', 'semper rutrum nulla nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio porttitor', 'luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices erat tortor sollicitudin mi sit', 'amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus');
 insert into consultation values ('433-46-4246', '2002-4-24','ac diam cras pellentesque volutpat dui maecenas tristique est et tempus', 'vulputate ut ultrices vel augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra', 'maecenas tristique est et tempus semper est quam pharetra magna ac', 'parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque penatibus');
-insert into consultation values ('204-53-2647', '2002-2-24', 'augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices', 'consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in', 'nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel', 'malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum');
+insert into consultation values ('204-53-2647', '2002-4-24', 'augue vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae donec pharetra magna vestibulum aliquet ultrices', 'consectetuer adipiscing elit proin interdum mauris non ligula pellentesque ultrices phasellus id sapien in', 'nunc proin at turpis a pede posuere nonummy integer non velit donec diam neque vestibulum eget vulputate ut ultrices vel', 'malesuada in imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum');
 insert into consultation values ('120-69-0626', '2012-7-15', 'vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet', 'nonummy gingivitis tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat', 'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna', 'consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam');
 insert into consultation values ('204-53-2647', '2015-7-16', 'vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet', 'nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat', 'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna', 'consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam');
 insert into consultation values ('433-46-4246', '2019-4-8', 'condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui', 'et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat', 'aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur', 'ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel');
@@ -145,7 +165,7 @@ insert into consultation_assistant values ('204-53-2647', '2010-7-27', '164-05-0
 insert into consultation_assistant values ('120-69-0626', '2006-3-30', '585-04-1776');
 insert into consultation_assistant values ('604-24-1006', '2008-8-11','611-36-6228');
 insert into consultation_assistant values ('433-46-4246', '2002-4-24','554-01-9560' );
-insert into consultation_assistant values ('204-53-2647', '2002-2-24', '554-01-9560' );
+insert into consultation_assistant values ('204-53-2647', '2002-4-24', '554-01-9560' );
 insert into consultation_assistant values ('120-69-0626', '2012-7-15', '554-01-9560' );
 insert into consultation_assistant values ('204-53-2647', '2015-7-16', '554-01-9560');
 insert into consultation_assistant values ('433-46-4246', '2019-4-8', '611-36-6228');
@@ -178,6 +198,7 @@ insert into consultation_diagnostic values ('204-53-2647', '2010-7-27', '0SH544Z
 insert into consultation_diagnostic values ('120-69-0626', '2006-3-30', '0CWY8DZ');
 insert into consultation_diagnostic values ('204-53-2647', '2015-7-16', '037Y356');
 insert into consultation_diagnostic values ('433-46-4246', '2019-4-8', '037Y356');
+insert into consultation_diagnostic values ('433-46-4246', '2019-4-8', '0CWY8DZ');
 
 
 /*INSERT MEDICATION*/
@@ -199,7 +220,8 @@ insert into prescription values ('SELZENTRY', 'Pfizer Laboratories Div Pfizer In
 insert into prescription values ('Velvet Grass', 'Nelco Laboratories, Inc.'   ,		'204-53-2647', '2010-7-27', '0SH544Z','100mg', 'Never');
 insert into prescription values ('Velvet Grass', 'Nelco Laboratories, Inc.'   ,     '204-53-2647', '2015-7-16', '037Y356','100mg', 'Never');
 insert into prescription values ('Velvet Grass', 'Nelco Laboratories, Inc.'   ,     '433-46-4246', '2019-4-8', '037Y356','50mg', 'Daily');
-											
+insert into prescription values ('Leader SleepTime', 'Cardinal Health'   ,     '433-46-4246', '2019-4-8', '037Y356','10mg', 'Weekly');
+						
 											
 /*INSERT PROCEDURE*/
 insert into procedure_ values ('Extraction', 'Teeth Removal');
@@ -208,6 +230,7 @@ insert into procedure_ values ('Gum Surgery', 'Surgery');
 insert into procedure_ values ('Sealants', 'Sealants application');
 insert into procedure_ values ('Teeth Whitening', 'in-office bleaching');
 
+
 /*INSERT PROCEDURE_IN_CONSULTATION*/
 /* procedure_name_ | VAT_doctor | date_timestamp | p_in_c_description*/
 insert into procedure_in_consultation values ('Extraction',								'204-53-2647', '2013-7-16', 'descp1');
@@ -215,6 +238,7 @@ insert into procedure_in_consultation values ('maxillary molar periapical radiog
 insert into procedure_in_consultation values ('Gum Surgery', 							'604-24-1006', '2016-6-15','descp3');
 insert into procedure_in_consultation values ('Sealants', 								'433-46-4246', '2017-1-4', 'descp4');
 insert into procedure_in_consultation values ('Teeth Whitening',						'204-53-2647', '2010-7-27','descp5');
+insert into procedure_in_consultation values ('maxillary molar periapical radiograph',	'604-24-1006', '2016-6-15','descp3');
 
 /*INSERT PROCEDURE_RADIOLOGY*/
 /*procedure_name_ | VAT_doctor  | date_timestamp | file_path*/
