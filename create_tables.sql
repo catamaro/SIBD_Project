@@ -1,8 +1,4 @@
-USE ist186938;
-
-
 /* DROP ALL TABLES IF EXIST*/
-
 DROP TABLE IF EXISTS procedure_charting;
 DROP TABLE IF EXISTS teeth;
 DROP TABLE IF EXISTS procedure_radiology;
@@ -32,9 +28,9 @@ CREATE TABLE employee (
 
 	employee_VAT						VARCHAR(255)		NOT NULL,
 	employee_name						VARCHAR(255)		NOT NULL,
-employee_birth_date					    DATE				NOT NULL,
-	employee_street						VARCHAR(255)		NOT NULL,
-	employee_city						VARCHAR(255)		NOT NULL, /*longest city name: Taumatawhakatangi­hangakoauauotamatea­turipukakapikimaunga­horonukupokaiwhen­uakitanatahu*/
+	employee_birth_date					DATE				NOT NULL,
+	employee_street					VARCHAR(255)		NOT NULL,
+	employee_city						VARCHAR(255)		NOT NULL, 
 	employee_zip						VARCHAR(255)		NOT NULL,
 	employee_IBAN						VARCHAR(255)		NOT NULL,
 	employee_salary						FLOAT				NOT NULL,
@@ -49,7 +45,7 @@ CREATE TABLE phone_number_employee (
 	employee_VAT						VARCHAR(255)		NOT NULL,
 	phone_number						VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (employee_VAT, phone_number),
-	FOREIGN KEY (employee_VAT)							REFERENCES		employee(employee_VAT)
+	FOREIGN KEY (employee_VAT)							REFERENCES		employee(employee_VAT) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
@@ -57,7 +53,7 @@ CREATE TABLE receptionist (
 
 	VAT_receptionist					VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_receptionist),
-	FOREIGN KEY (VAT_receptionist)						REFERENCES		employee(employee_VAT)
+	FOREIGN KEY (VAT_receptionist)						REFERENCES		employee(employee_VAT) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
@@ -69,7 +65,7 @@ CREATE TABLE doctor (
 	email								VARCHAR(255)		NOT NULL,
 	PRIMARY KEY(VAT_doctor),
 	UNIQUE(email),
-	FOREIGN KEY (VAT_doctor)							REFERENCES		employee(employee_VAT)
+	FOREIGN KEY (VAT_doctor)							REFERENCES		employee(employee_VAT) ON UPDATE CASCADE ON DELETE CASCADE
 	/*ADD TRIGGER: all doctor must be trainee OR permanent*/
 );
 
@@ -77,7 +73,7 @@ CREATE TABLE nurse (
 
 	VAT_nurse							VARCHAR(255)		NOT NULL,
 	PRIMARY KEY(VAT_nurse),
-	FOREIGN KEY (VAT_nurse)								REFERENCES		employee(employee_VAT)
+	FOREIGN KEY (VAT_nurse)								REFERENCES		employee(employee_VAT) ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE client (
@@ -98,7 +94,7 @@ CREATE TABLE phone_number_client(
 	client_VAT							VARCHAR(255)		NOT NULL,
 	phone_number						INTEGER				NOT NULL,
 	PRIMARY KEY (client_VAT, phone_number),
-	FOREIGN KEY (client_VAT)							REFERENCES		client(client_VAT)
+	FOREIGN KEY (client_VAT)							REFERENCES		client(client_VAT) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
@@ -141,8 +137,8 @@ CREATE TABLE appointment (
 	date_timestamp						DATE				NOT NULL,
 	appointment_description				VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp),
-	FOREIGN KEY (VAT_doctor)							REFERENCES		doctor(VAT_doctor),
-	FOREIGN KEY (VAT_client)							REFERENCES		client(client_VAT)
+	FOREIGN KEY (VAT_doctor)							REFERENCES		doctor(VAT_doctor) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (VAT_client)							REFERENCES		client(client_VAT) ON UPDATE CASCADE ON DELETE CASCADE	
 
 );
 
@@ -156,24 +152,24 @@ CREATE TABLE consultation (
 	SOAP_P								VARCHAR(255)		NOT NULL,
 
 	PRIMARY KEY (VAT_doctor, date_timestamp),
-	FOREIGN KEY (VAT_doctor, date_timestamp)			REFERENCES		appointment(VAT_doctor, date_timestamp)
+	FOREIGN KEY (VAT_doctor, date_timestamp)			REFERENCES		appointment(VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE
 /*IC: must have nurse assigned*/
 );
 
 CREATE TABLE consultation_assistant (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
+	date_timestamp						DATE					NOT NULL,
 	VAT_nurse							VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp),
-	FOREIGN KEY (VAT_doctor,date_timestamp)				REFERENCES		consultation(VAT_doctor, date_timestamp),
-	FOREIGN KEY (VAT_nurse)								REFERENCES		nurse(VAT_nurse)
+	FOREIGN KEY (VAT_doctor,date_timestamp)				REFERENCES		consultation(VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (VAT_nurse)										REFERENCES		nurse(VAT_nurse) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
 CREATE TABLE diagnostic_code (
 
-	ID									VARCHAR(255)		NOT NULL,
+	ID											VARCHAR(255)		NOT NULL,
 	diagnostic_description				VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (ID)
 );
@@ -185,26 +181,26 @@ CREATE TABLE diagnostic_code_relation (
 	ID_2								VARCHAR(255)		NOT NULL,
 	diagnostic_type						VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (ID_1, ID_2),
-	FOREIGN KEY (ID_1)							REFERENCES		diagnostic_code(ID),
-	FOREIGN KEY (ID_2)							REFERENCES		diagnostic_code(ID)
+	FOREIGN KEY (ID_1)							REFERENCES		diagnostic_code(ID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (ID_2)							REFERENCES		diagnostic_code(ID) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
 CREATE TABLE consultation_diagnostic (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
-	ID									VARCHAR(255)		NOT NULL,
+	date_timestamp							DATE				NOT NULL,
+	ID										VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp, ID),
-	FOREIGN KEY (VAT_doctor, date_timestamp)			REFERENCES		consultation(VAT_doctor, date_timestamp),
-	FOREIGN KEY (ID)									REFERENCES		diagnostic_code(ID)
+	FOREIGN KEY (VAT_doctor, date_timestamp)			REFERENCES		consultation(VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (ID)											REFERENCES		diagnostic_code(ID) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
 CREATE TABLE medication (
 
 	medication_name						VARCHAR(255)		NOT NULL,
-	medication_lab						VARCHAR(255)		NOT NULL,
+	medication_lab							VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (medication_name, medication_lab)
 
 );
@@ -212,22 +208,22 @@ CREATE TABLE medication (
 CREATE TABLE prescription (
 
 	medication_name						VARCHAR(255)		NOT NULL,
-	medication_lab						VARCHAR(255)		NOT NULL,
-	VAT_doctor							VARCHAR(50)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
-	ID									VARCHAR(50)		NOT NULL,
-	dosage								VARCHAR(50)		NOT NULL,
+	medication_lab							VARCHAR(255)		NOT NULL,
+	VAT_doctor								VARCHAR(50)			NOT NULL,
+	date_timestamp								DATE				NOT NULL,
+	ID											VARCHAR(50)			NOT NULL,
+	dosage									VARCHAR(50)			NOT NULL,
 	prescription_description			VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (medication_name, medication_lab, VAT_doctor, date_timestamp, ID),
-	FOREIGN KEY (VAT_doctor, date_timestamp, ID)		REFERENCES		consultation_diagnostic(VAT_doctor, date_timestamp, ID),
-	FOREIGN KEY (medication_name, medication_lab)		REFERENCES		medication(medication_name, medication_lab)
+	FOREIGN KEY (VAT_doctor, date_timestamp, ID)		REFERENCES		consultation_diagnostic(VAT_doctor, date_timestamp, ID) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (medication_name, medication_lab)	REFERENCES		medication(medication_name, medication_lab) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
 CREATE TABLE procedure_ (
 
 	procedure_name_						VARCHAR(255)		NOT NULL,
-	procedure_type						VARCHAR(255)		NOT NULL,
+	procedure_type							VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (procedure_name_)
 
 );
@@ -235,29 +231,29 @@ CREATE TABLE procedure_ (
 CREATE TABLE procedure_in_consultation (
 
 	procedure_name_						VARCHAR(255)		NOT NULL,
-	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
+	VAT_doctor								VARCHAR(255)		NOT NULL,
+	date_timestamp								DATE				NOT NULL,
 	p_in_c_description					VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (procedure_name_, VAT_doctor, date_timestamp),
-	FOREIGN KEY (procedure_name_)						REFERENCES		procedure_(procedure_name_),
-	FOREIGN KEY (VAT_doctor, date_timestamp)			REFERENCES		consultation(VAT_doctor, date_timestamp)
+	FOREIGN KEY (procedure_name_)							REFERENCES		procedure_(procedure_name_) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (VAT_doctor, date_timestamp)			REFERENCES		consultation(VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
 CREATE TABLE procedure_radiology (
 
 	procedure_name_						VARCHAR(255)		NOT NULL,
-	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
-	file_path							VARCHAR(255)		NOT NULL,					
+	VAT_doctor								VARCHAR(255)		NOT NULL,
+	date_timestamp								DATE				NOT NULL,
+	file_path								VARCHAR(255)		NOT NULL,					
 	PRIMARY KEY (procedure_name_, VAT_doctor, date_timestamp, file_path),
-	FOREIGN KEY (procedure_name_, VAT_doctor, date_timestamp)	REFERENCES procedure_in_consultation(procedure_name_, VAT_doctor, date_timestamp)
+	FOREIGN KEY (procedure_name_, VAT_doctor, date_timestamp)	REFERENCES procedure_in_consultation(procedure_name_, VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
 CREATE TABLE teeth (
 
-	quadrant							INTEGER				NOT NULL,
+	quadrant								INTEGER				NOT NULL,
 	number								INTEGER				NOT NULL,
 	teeth_name							VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (quadrant, number)
@@ -267,15 +263,15 @@ CREATE TABLE teeth (
 CREATE TABLE procedure_charting (
 
 	procedure_name_						VARCHAR(255)		NOT NULL,
-	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
-	quadrant							INTEGER				NOT NULL,
-	number								INTEGER				NOT NULL,
+	VAT_doctor								VARCHAR(255)		NOT NULL,
+	date_timestamp								DATE				NOT NULL,
+	quadrant									INTEGER				NOT NULL,
+	number									INTEGER				NOT NULL,
 	procedure_charting_descp			VARCHAR(255)		NOT NULL,	
-	measure								INTEGER				NOT NULL,	
+	measure									INTEGER				NOT NULL,	
 	PRIMARY KEY (procedure_name_, VAT_doctor, date_timestamp, quadrant, number),
-	FOREIGN KEY (procedure_name_, VAT_doctor, date_timestamp)		REFERENCES procedure_in_consultation(procedure_name_, VAT_doctor, date_timestamp),
-	FOREIGN KEY (quadrant, number)									REFERENCES teeth(quadrant, number)
+	FOREIGN KEY (procedure_name_, VAT_doctor, date_timestamp)		REFERENCES procedure_in_consultation(procedure_name_, VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (quadrant, number)											REFERENCES teeth(quadrant, number) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
