@@ -1,3 +1,5 @@
+USE proj_part2;
+
 /* DROP ALL TABLES IF EXIST*/
 DROP TABLE IF EXISTS procedure_charting;
 DROP TABLE IF EXISTS teeth;

@@ -1,6 +1,6 @@
-CREATE VIEW dim_client
+DROP VIEW IF EXISTS dim_client;
 
-AS
+CREATE VIEW dim_client AS
 
 SELECT client_VAT, client_gender, client_age
 
