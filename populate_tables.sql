@@ -246,8 +246,8 @@ insert into appointment values ('433-46-4246', '892-19-9548', '2019-3-18', 'a li
 insert into appointment values ('433-46-4246', '892-19-9548', '2019-3-19', 'libera me domine et morte eterna in die il la tremenda in die illa');
 insert into appointment values ('433-46-4246', '892-19-9548', '2019-3-20', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
 insert into appointment values ('433-46-4246', '892-19-9548', '2019-3-21', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
-insert into appointment values ('433-46-4246', '892-19-9548', '2019-8-22', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
-insert into appointment values ('433-46-4246', '892-19-9548', '2019-8-23', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '542-12-5861', '2019-8-22', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '542-12-5861', '2019-8-23', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
 
 /*INSERT CONSULTATION*/  
 /*('VAT_Doctor', 'Date', Description)*/
