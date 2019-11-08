@@ -99,6 +99,26 @@ insert into supervision_report values ('204-53-2647', '2008-8-11', 'metus vitae 
 insert into supervision_report values ('120-69-0626', '2002-4-24', 'nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing', 2);
 insert into supervision_report values ('204-53-2647', '2002-2-24', 'erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 5);
 insert into supervision_report values ('120-69-0626', '2012-7-15', 'elit sodales scelerisque mauris sit amet eros suspendisse insufficient tortor quis turpis sed ante vivamus tortor duis mattis', 4);
+insert into supervision_report values ('204-53-2647', '2011-08-22', 'mauris', 0);
+insert into supervision_report values ('120-69-0626', '2003-07-02', 'convallis duis consequat dui nec', 2);
+insert into supervision_report values ('204-53-2647', '2015-03-25', 'suscipit ligula in', 1);
+insert into supervision_report values ('120-69-0626', '2015-05-18', 'dis parturient montes nascetur ridiculus', 5);
+insert into supervision_report values ('204-53-2647', '2004-02-03', 'sagittis sapien cum', 1);
+insert into supervision_report values ('120-69-0626', '2014-02-02', 'tellus nisi', 3);
+insert into supervision_report values ('204-53-2647', '2011-04-15', 'id', 4);
+insert into supervision_report values ('120-69-0626', '2018-12-09', 'rutrum nulla tellus in', 5);
+insert into supervision_report values ('204-53-2647', '2008-05-24', 'dui maecenas', 5);
+insert into supervision_report values ('120-69-0626', '2004-10-28', 'dictumst aliquam augue quam sollicitudin', 2);
+insert into supervision_report values ('204-53-2647', '2006-06-16', 'et magnis dis parturient montes', 2);
+insert into supervision_report values ('120-69-0626', '2016-11-26', 'tristique est et', 1);
+insert into supervision_report values ('204-53-2647', '2017-08-29', 'consectetuer eget rutrum', 5);
+insert into supervision_report values ('120-69-0626', '2000-12-11', 'vitae ipsum aliquam non', 4);
+insert into supervision_report values ('204-53-2647', '2007-05-29', 'sem fusce consequat nulla', 4);
+insert into supervision_report values ('120-69-0626', '2010-09-09', 'eget', 1);
+insert into supervision_report values ('204-53-2647', '2009-12-18', 'leo rhoncus sed vestibulum', 4);
+insert into supervision_report values ('120-69-0626', '2009-07-28', 'lacinia aenean sit amet', 1);
+insert into supervision_report values ('204-53-2647', '2002-04-04', 'rutrum neque aenean', 2);
+insert into supervision_report values ('120-69-0626', '2012-08-17', 'nec sem duis aliquam', 3);
 
 /*INSERT APPOINTMENT*/
 /*('Vat_Doctor', 'VAT_Client', 'date_timestamp', 'appointment_description')*/
