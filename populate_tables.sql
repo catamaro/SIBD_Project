@@ -61,6 +61,10 @@ insert into client values ('727-22-5453', 'Raynor Gildersleaves', '1965-1-23', '
 insert into client values ('152-70-3658', 'Baudoin Haile', '1961-10-3', 'Hagan', 'Malko Turnovo', '8359', 'Male', null);
 insert into client values ('759-92-5791', 'Bibbie Aldine', '1961-9-12', 'Esch', 'Bagong Sikat', '4903', 'Female', null);
 
+UPDATE client SET client_age = 
+	YEAR(CURDATE()) - YEAR(client_birth_date) - (DATE_FORMAT(client_birth_date, '%m%d') < DATE_FORMAT(CURDATE(), '%m%d'))
+	WHERE client_age IS NULL;
+
 /*INSERT PHONE CLIENT*/ 
 insert into phone_number_client values ('892-19-9548', '918640458');
 insert into phone_number_client values ('703-30-2993', '917518981');
