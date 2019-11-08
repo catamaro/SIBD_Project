@@ -14,4 +14,4 @@ WHERE employee_VAT IN (
 	SELECT a.VAT_doctor
 	FROM appointment AS a
 	GROUP BY a.VAT_doctor
-	HAVING COUNT(a.VAT_doctor) > 2); /*nota meter 100*/
+	HAVING COUNT(a.VAT_doctor) > 100); /*nota meter 100*/
