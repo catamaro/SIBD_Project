@@ -50,7 +50,7 @@ insert into nurse values ('554-01-9560');
 
 /*INSERT CLIENT*/
 /*client_VAT  | client_name | client_birth_date | client_street | client_city | client_zip | client_gender | client_age*/
-insert into client values ('892-19-9548', 'Jimmie Strettle', '1964-5-5', 'Dwight', 'Kansas City', '64187', 'Male', null); 
+insert into client values ('892-19-9548', 'Jimmie Strettle', '1964-5-5', 'Dwight', 'Kansas City', '64187', 'Male', null);
 insert into client values ('703-30-2993', 'Veronika Doughton', '1981-1-2', 'East', 'Kansas City', '64187', 'Female', null);
 insert into client values ('264-89-1889', 'Essy Skupinski', '1959-8-12', 'Schmedeman', 'San Salvador', '6300-130', 'Female', null);
 insert into client values ('842-73-0131', 'Tiphanie McSharry', '2008-9-11', 'High Crossing', 'Povorino', '397355', 'Female', null);
@@ -60,6 +60,7 @@ insert into client values ('397-12-3099', 'Cornell Felce', '1965-12-8', 'Buttern
 insert into client values ('727-22-5453', 'Raynor Gildersleaves', '1965-1-23', 'Ryan', 'San Antonio', '6407', 'Male', null);
 insert into client values ('152-70-3658', 'Baudoin Haile', '1961-10-3', 'Hagan', 'Malko Turnovo', '8359', 'Male', null);
 insert into client values ('759-92-5791', 'Bibbie Aldine', '1961-9-12', 'Esch', 'Bagong Sikat', '4903', 'Female', null);
+insert into client values ('342-12-5861', 'Evan Simms', '1987-6-18', 'Elm', 'Los Angeles', '90210', 'Male', null);
 
 UPDATE client SET client_age = 
 	YEAR(CURDATE()) - YEAR(client_birth_date) - (DATE_FORMAT(client_birth_date, '%m%d') < DATE_FORMAT(CURDATE(), '%m%d'))
@@ -90,7 +91,7 @@ insert into trainee_doctor values ('120-69-0626', '433-46-4246');
 /*INSERT SUPERVISION_REPORT*/
 /* VAT_trainee | date_timestamp | report_description | report_evaluation*/
 insert into supervision_report values ('204-53-2647', '2013-7-16', 'fringilla rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer', 4);
-insert into supervision_report values ('120-69-0626', '2005-1-2', 'congue vivamus metus arcu adipiscing molestie insufficient at vulputate vitae nisl aenean lectus', 4);
+insert into supervision_report values ('120-69-0626', '2005-1-2', 'congue vivamus metus arcu insufficient', 4);
 insert into supervision_report values ('204-53-2647', '2016-6-15', 'ut erat curabitur gravida nisi at nibh in hac habitasse platea dictumst aliquam', 2);
 insert into supervision_report values ('120-69-0626', '2017-1-4', 'aliquet at feugiat non pretium quis lectus suspendisse potenti in eleifend quam a odio', 4);
 insert into supervision_report values ('204-53-2647', '2010-7-27', 'imperdiet et commodo vulputate justo in blandit ultrices enim lorem ipsum dolor sit amet consectetuer adipiscing elit', 5);
@@ -98,12 +99,12 @@ insert into supervision_report values ('120-69-0626', '2006-3-30', 'orci luctus 
 insert into supervision_report values ('204-53-2647', '2008-8-11', 'metus vitae ipsum aliquam non mauris morbi non lectus aliquam sit amet diam', 4);
 insert into supervision_report values ('120-69-0626', '2002-4-24', 'nulla ac enim in tempor turpis nec euismod scelerisque quam turpis adipiscing', 2);
 insert into supervision_report values ('204-53-2647', '2002-2-24', 'erat eros viverra eget congue eget semper rutrum nulla nunc purus phasellus', 5);
-insert into supervision_report values ('120-69-0626', '2012-7-15', 'elit sodales scelerisque mauris sit amet eros suspendisse insufficient tortor quis turpis sed ante vivamus tortor duis mattis', 4);
+insert into supervision_report values ('120-69-0626', '2012-7-15', 'elit insufficient tortor  tortor duis mattis', 4);
 insert into supervision_report values ('204-53-2647', '2011-08-22', 'mauris', 1);
 insert into supervision_report values ('120-69-0626', '2003-07-02', 'convallis duis consequat dui nec', 2);
 insert into supervision_report values ('204-53-2647', '2015-03-25', 'suscipit ligula in', 1);
 insert into supervision_report values ('120-69-0626', '2015-05-18', 'dis parturient montes nascetur ridiculus', 5);
-insert into supervision_report values ('204-53-2647', '2004-02-03', 'sagittis sapien cum', 1);
+insert into supervision_report values ('204-53-2647', '2004-02-03', 'sagittis sapien insufficient', 1);
 insert into supervision_report values ('120-69-0626', '2014-02-02', 'tellus nisi', 3);
 insert into supervision_report values ('204-53-2647', '2011-04-15', 'id', 4);
 insert into supervision_report values ('120-69-0626', '2018-12-09', 'rutrum nulla tellus in', 5);
@@ -136,9 +137,121 @@ insert into appointment values ('204-53-2647', '769-62-0549', '2015-7-16', 'a li
 insert into appointment values ('433-46-4246', '842-73-0131', '2019-4-8', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
 insert into appointment values ('120-69-0626', '397-12-3099', '2019-11-21', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
 insert into appointment values ('120-69-0626', '842-73-0131', '2019-10-7', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('120-69-0626', '342-12-5861', '2012-7-16', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('204-53-2647', '842-73-0131', '2015-8-26', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('204-53-2647', '397-12-3099', '2012-4-17', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('120-69-0626', '342-12-5861', '2019-4-12', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2018-11-23', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('204-53-2647', '842-73-0131', '2019-6-21', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
 
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-7-16', 'tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse');
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-1-2',  'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio');
+insert into appointment values ('433-46-4246', '264-89-1889', '2019-6-15', 'lectus aliquam sit amet diam in magna bibendum imperdiet nullam');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-1-4',  'sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-7-27', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-3-30', 'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-8-11', 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-4-24','phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-4-24', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-7-15', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-7-16', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-4-8', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-11-11', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-10-8', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-7-16', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-26', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-4-17', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-5-10', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-11-23', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-6-27', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
 
-/*INSERT CONSULTATION*/         
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-8-1', 'tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse');
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-8-2',  'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio');
+insert into appointment values ('433-46-4246', '264-89-1889', '2019-8-3', 'lectus aliquam sit amet diam in magna bibendum imperdiet nullam');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-4',  'sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-8-5', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-8-6', 'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-8-7', 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-8-8','phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-8-9', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-8-10', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-8-12', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-8-13', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-8-14', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-15', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-8-16', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-17', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-8-18', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-8-19', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-20', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-21', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-2-1', 'tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse');
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-2-2',  'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio');
+insert into appointment values ('433-46-4246', '264-89-1889', '2019-2-3', 'lectus aliquam sit amet diam in magna bibendum imperdiet nullam');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-2-4',  'sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-2-5', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-2-6', 'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-2-7', 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-2-8','phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-2-9', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-2-10', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-2-12', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-2-13', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-2-14', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-2-15', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-2-16', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-2-17', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-2-18', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-2-19', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-2-20', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-2-21', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-12-1', 'tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse');
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-12-2',  'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio');
+insert into appointment values ('433-46-4246', '264-89-1889', '2019-12-3', 'lectus aliquam sit amet diam in magna bibendum imperdiet nullam');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-12-4',  'sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-12-5', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-12-6', 'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-12-7', 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-12-8','phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-12-9', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-12-10', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-12-12', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-12-13', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-12-14', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-12-15', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-12-16', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-12-17', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-12-18', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-12-19', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-12-20', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-12-21', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-3-1', 'tincidunt eget tempus vel pede morbi porttitor lorem id ligula suspendisse');
+insert into appointment values ('433-46-4246', '892-19-9548', '2019-3-2',  'nunc purus phasellus in felis donec semper sapien a libero nam dui proin leo odio');
+insert into appointment values ('433-46-4246', '264-89-1889', '2019-3-3', 'lectus aliquam sit amet diam in magna bibendum imperdiet nullam');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-3-4',  'sit amet nulla quisque arcu libero rutrum ac lobortis vel dapibus at diam nam tristique');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-3-5', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-3-6', 'tincidunt eu felis fusce posuere felis sed lacus morbi sem mauris laoreet');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-3-7', 'nibh in hac habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel');
+insert into appointment values ('433-46-4246', '463-47-7696', '2019-3-8','phasellus sit amet erat nulla tempus vivamus in felis eu sapien cursus vestibulum proin eu mi');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-3-9', 'dolor sit amet consectetuer adipiscing elit proin risus praesent lectus vestibulum');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-3-10', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-3-12', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '769-62-0549', '2019-3-13', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-3-14', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-3-15', 'tempus sit amet sem fusce consequat nulla nisl nunc nisl duis bibendum felis sed interdum venenatis turpis');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-3-16', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-3-17', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '397-12-3099', '2019-3-18', 'a libero nam dui proin leo odio porttitor id consequat in consequat ut nulla sed');
+insert into appointment values ('433-46-4246', '342-12-5861', '2019-3-19', 'libera me domine et morte eterna in die il la tremenda in die illa');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-3-20', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-3-21', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+
+insert into appointment values ('433-46-4246', '842-73-0131', '2019-8-22', 'quoniam tu solo sanctus tu solo dominus tu solo altissimus');
+
+/*INSERT CONSULTATION*/  
 /*('VAT_Doctor', 'Date', Description)*/
 insert into consultation values ('204-53-2647', '2013-7-16', 'ultrices aliquet maecenas leo odio condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras', 'lorem id ligula gingivitis ornare consequat lectus in est risus auctor sed tristique in tempus sit amet sem', 'id consequat in consequat ut nulla sed accumsan felis ut at dolor quis odio consequat varius', 'rhoncus mauris enim leo rhoncus sed vestibulum sit amet cursus id turpis integer aliquet massa id');
 insert into consultation values ('120-69-0626', '2005-1-2', 'nec nisi vulputate nonummy maecenas tincidunt lacus at velit vivamus vel', 'sapien cum gingivitis natoque penatibus et magnis dis parturient montes nascetur ridiculus mus etiam vel augue vestibulum rutrum rutrum neque', 'ipsum praesent blandit lacinia erat vestibulum sed magna at nunc commodo placerat praesent blandit nam nulla integer pede justo lacinia', 'luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui maecenas tristique est et tempus semper');
@@ -153,7 +266,10 @@ insert into consultation values ('120-69-0626', '2012-7-15', 'vestibulum rutrum 
 insert into consultation values ('204-53-2647', '2015-7-16', 'vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet', 'nonummy maecenas tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat', 'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna', 'consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam');
 insert into consultation values ('433-46-4246', '2019-4-8', 'condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui', 'et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat', 'aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur', 'ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel');
 insert into consultation values ('120-69-0626', '2019-11-21', 'condimentum id luctus nec molestie sed justo pellentesque viverra pede ac diam cras pellentesque volutpat dui', 'et ultrices posuere cubilia curae duis faucibus accumsan odio curabitur convallis duis consequat', 'aenean lectus pellentesque eget nunc donec quis orci eget orci vehicula condimentum curabitur', 'ipsum ac tellus semper interdum mauris ullamcorper purus sit amet nulla quisque arcu libero rutrum ac lobortis vel');
-
+insert into consultation values ('204-53-2647', '2012-4-17', 'vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet', 'nonummy gingivitis tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat', 'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna', 'consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam');
+insert into consultation values ('120-69-0626', '2019-4-12', 'vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet', 'nonummy gingivitis tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat', 'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna', 'consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam');
+insert into consultation values ('433-46-4246', '2018-11-23', 'vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet', 'nonummy gingivitis tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat', 'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna', 'consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam');
+insert into consultation values ('204-53-2647', '2019-6-21', 'vestibulum rutrum rutrum neque aenean auctor gravida sem praesent id massa id nisl venenatis lacinia aenean sit amet', 'nonummy gingivitis tincidunt lacus at velit vivamus vel nulla eget eros elementum pellentesque quisque porta volutpat', 'nullam molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus eu magna', 'consequat morbi a ipsum integer a nibh in quis justo maecenas rhoncus aliquam');
 
 /*INSERT CONSULTATION_ASSISTANT*/
 /*('VAT_Doctor', 'Date', VAT_Nurse)*/
@@ -170,6 +286,10 @@ insert into consultation_assistant values ('120-69-0626', '2012-7-15', '554-01-9
 insert into consultation_assistant values ('204-53-2647', '2015-7-16', '554-01-9560');
 insert into consultation_assistant values ('433-46-4246', '2019-4-8', '611-36-6228');
 insert into consultation_assistant values ('120-69-0626', '2019-11-21', '611-36-6228');
+insert into consultation_assistant values ('204-53-2647', '2012-4-17','554-01-9560');
+insert into consultation_assistant values ('120-69-0626', '2019-4-12','611-36-6228' );
+insert into consultation_assistant values ('433-46-4246', '2018-11-23', '611-36-6228' );
+insert into consultation_assistant values ('204-53-2647', '2019-6-21', '164-05-0156' );
 
 
 /*INSERT DIAGNOSTIC_CODE*/
@@ -180,7 +300,12 @@ insert into diagnostic_code values ('09N3XZZ', 'etiam vel augue vestibulum rutru
 insert into diagnostic_code values ('037Y356', 'morbi non quam nec dui rutrum nulla tellus in sagittis dui');
 insert into diagnostic_code values ('0SH544Z', 'gingivitis');
 insert into diagnostic_code values ('0CWY8DZ', 'habitasse platea dictumst aliquam augue quam sollicitudin vitae consectetuer eget rutrum at lorem integer tincidunt ante vel ipsum praesent');
-
+insert into diagnostic_code values ('08J3YBZ', 'incipit lacrimarae jubilate deo dental cavities kyrie');
+insert into diagnostic_code values ('0A2SE6T', 'filius clivis punctum dental cavities podatus porrectus');
+insert into diagnostic_code values ('0J7LTW4', 'agnus dei qui tollis pecatta mundi dental cavities nobis infectious disease');
+insert into diagnostic_code values ('08J3YBZ', 'incipit lacrimarae jubilate deo dental cavities kyrie');
+insert into diagnostic_code values ('0A2SE6T', 'filius clivis punctum dental cavities podatus porrectus');
+insert into diagnostic_code values ('0J7LTW4', 'agnus dei qui tollis pecatta mundi dental cavities nobis infectious disease');
 
 /*INSERT DIAGNOSTIC_CODE_RELATION*/
 /*('ID_1', 'ID_2', '')*/
@@ -199,7 +324,10 @@ insert into consultation_diagnostic values ('120-69-0626', '2006-3-30', '0CWY8DZ
 insert into consultation_diagnostic values ('204-53-2647', '2015-7-16', '037Y356');
 insert into consultation_diagnostic values ('433-46-4246', '2019-4-8', '037Y356');
 insert into consultation_diagnostic values ('433-46-4246', '2019-4-8', '0CWY8DZ');
-
+insert into consultation_diagnostic values ('204-53-2647', '2012-4-17', '08J3YBZ');
+insert into consultation_diagnostic values ('120-69-0626', '2019-4-12', '08J3YBZ');
+insert into consultation_diagnostic values ('433-46-4246', '2018-11-23', '0J7LTW4');
+insert into consultation_diagnostic values ('204-53-2647', '2019-6-21', '0A2SE6T');
 
 /*INSERT MEDICATION*/
 insert into medication values ('Norflex', 'Graceway Pharmaceuticals, LLC');
@@ -210,6 +338,10 @@ insert into medication values ('Velvet Grass', 'Nelco Laboratories, Inc.');
 insert into medication values ('Scrub Pine', 'Nelco Laboratories, Inc.');
 insert into medication values ('aspirin', 'H E B');
 insert into medication values ('Leader SleepTime', 'Cardinal Health');
+insert into medication values ('Dentex Cav', 'Franz Laboratories, Inc.');
+insert into medication values ('CavityDentex', 'Lorant CO');
+insert into medication values ('Elix Dentis', 'Cardinal Health');
+insert into medication values ('Infex', 'Velma Laboratories, Inc.');
 
 /*INSERT PRESCRIPTION*/
 /* medication_name | medication_lab | VAT_doctor  | date_timestamp | ID | dosage | prescription_description*/
@@ -221,15 +353,17 @@ insert into prescription values ('Velvet Grass', 'Nelco Laboratories, Inc.'   ,	
 insert into prescription values ('Velvet Grass', 'Nelco Laboratories, Inc.'   ,     '204-53-2647', '2015-7-16', '037Y356','100mg', 'Never');
 insert into prescription values ('Velvet Grass', 'Nelco Laboratories, Inc.'   ,     '433-46-4246', '2019-4-8', '037Y356','50mg', 'Daily');
 insert into prescription values ('Leader SleepTime', 'Cardinal Health'   ,     '433-46-4246', '2019-4-8', '037Y356','10mg', 'Weekly');
-						
-											
+insert into prescription values ('Dentex Cav', 'Franz Laboratories, Inc.'   ,		'204-53-2647', '2012-4-17', '08J3YBZ','50mg', '2 times a day');
+insert into prescription values ('CavityDentex', 'Lorant CO'   ,		'120-69-0626', '2019-4-12', '08J3YBZ','50mg', '2 times a day');
+insert into prescription values ('Elix Dentis', 'Cardinal Health'   ,		'204-53-2647', '2019-6-21', '0A2SE6T','15mg', 'Daily');																							  
+insert into prescription values ('Infex', 'Velma Laboratories, Inc.'   ,		'433-46-4246', '2018-11-23', '0J7LTW4','15mg', 'Daily');																							  
+
 /*INSERT PROCEDURE*/
 insert into procedure_ values ('Extraction', 'Teeth Removal');
 insert into procedure_ values ('maxillary molar periapical radiograph', 'Radiography Exam');
 insert into procedure_ values ('Gum Surgery', 'Surgery');
 insert into procedure_ values ('Sealants', 'Sealants application');
 insert into procedure_ values ('Teeth Whitening', 'in-office bleaching');
-
 
 /*INSERT PROCEDURE_IN_CONSULTATION*/
 /* procedure_name_ | VAT_doctor | date_timestamp | p_in_c_description*/
