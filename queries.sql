@@ -44,7 +44,7 @@ WHERE cl.client_VAT IN (SELECT a.VAT_client FROM appointment AS a WHERE a.VAT_cl
 		ON a.VAT_doctor = c.VAT_doctor AND a.date_timestamp = c.date_timestamp));                
                 
 /*********************************query 5*********************************/
-SELECT dc.ID, dc.diagnostic_description, COUNT(distinct p.medication_name) as diferent_medication
+SELECT dc.ID, dc.diagnostic_description, COUNT(distinct p.medication_name, p.medication_lab) as diferent_medication
 FROM prescription as p, diagnostic_code dc
 WHERE dc.ID = p.ID
 GROUP BY dc.ID
@@ -100,7 +100,6 @@ INNER JOIN
 	 GROUP BY ID) as temp_2
 ON temp.ID = temp_2.ID AND temp_2.max_med = temp.count_med
 GROUP BY temp.ID;
-
 /*********************************query 8*********************************/
 SELECT p.medication_name, p.medication_lab
 FROM
