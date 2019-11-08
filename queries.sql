@@ -44,7 +44,7 @@ WHERE cl.client_VAT IN (SELECT a.VAT_client FROM appointment AS a WHERE a.VAT_cl
 		ON a.VAT_doctor = c.VAT_doctor AND a.date_timestamp = c.date_timestamp));                
                 
 /*********************************query 5*********************************/
-SELECT dc.ID, dc.diagnostic_description, COUNT(p.medication_name) as diferent_medication
+SELECT dc.ID, dc.diagnostic_description, COUNT(distinct p.medication_name) as diferent_medication
 FROM prescription as p, diagnostic_code dc
 WHERE dc.ID = p.ID
 GROUP BY dc.ID
@@ -87,18 +87,19 @@ GROUP BY cl.client_age;
 /*********************************query 7*********************************/
 SELECT temp.ID, temp.medication_name
 FROM
-	(SELECT dc.ID, p.medication_name, COUNT(*) as count_med
+	(SELECT dc.ID, p.medication_name, COUNT(distinct p.VAT_doctor, p.date_timestamp) as count_med
 	 FROM prescription as p, diagnostic_code as dc
 	 WHERE dc.ID = p.ID
-	 GROUP BY dc.ID, p.medication_name) as temp
+	 GROUP BY dc.ID, p.medication_name, p.medication_lab) as temp
 INNER JOIN 
 	(SELECT temp_1.ID, MAX(temp_1.count_med) as max_med
-	 FROM (SELECT dc.ID, p.medication_name, COUNT(*) as count_med
+	 FROM (SELECT dc.ID, p.medication_name, COUNT(distinct p.VAT_doctor, p.date_timestamp) as count_med
 		   FROM prescription as p, diagnostic_code as dc
 		   WHERE dc.ID = p.ID
-		   GROUP BY dc.ID, p.medication_name) temp_1
+		   GROUP BY dc.ID, p.medication_name, p.medication_lab) temp_1
 	 GROUP BY ID) as temp_2
-ON temp.ID = temp_2.ID AND temp_2.max_med = temp.count_med;
+ON temp.ID = temp_2.ID AND temp_2.max_med = temp.count_med
+GROUP BY temp.ID;
 
 /*********************************query 8*********************************/
 SELECT p.medication_name, p.medication_lab
@@ -118,9 +119,9 @@ ORDER BY p.medication_name , p.medication_lab;
 SELECT cl.client_name, cl.client_street , cl.client_city , cl.client_zip
 FROM appointment as a, client as cl
 LEFT JOIN ( SELECT a.VAT_client, a.date_timestamp		
-	    FROM consultation as c
-	    RIGHT JOIN appointment as a ON c.VAT_doctor = a.VAT_doctor AND a.date_timestamp = c.date_timestamp	
-	    WHERE c.VAT_doctor IS NULL AND year(a.date_timestamp) = 2019) as missed on cl.client_VAT = missed.VAT_client
+			FROM consultation as c
+			RIGHT JOIN appointment as a ON c.VAT_doctor = a.VAT_doctor AND a.date_timestamp = c.date_timestamp	
+			WHERE c.VAT_doctor IS NULL AND year(a.date_timestamp) = 2019) as missed on cl.client_VAT = missed.VAT_client
 WHERE missed.VAT_client IS NULL AND cl.client_VAT = a.VAT_client AND year(a.date_timestamp) = 2019;
 
 
