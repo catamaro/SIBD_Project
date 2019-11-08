@@ -13,7 +13,7 @@ SELECT c.client_VAT, c.client_name, p.phone_number
 					FROM consultation AS c, employee AS e
 					WHERE e.employee_name = 'Jane SweetTooth'
 						AND e.employee_VAT = c.VAT_doctor)
-	GROUP BY(c.client_name);
+	ORDER BY(c.client_name);
 
 /*********************************query 2*********************************/
 SELECT t.VAT_trainee, e.employee_name, e2.employee_name, report_evaluation, report_description  
