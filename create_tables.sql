@@ -103,7 +103,7 @@ CREATE TABLE permanent_doctor (
 	VAT_permanent						VARCHAR(255)		NOT NULL,
 	years_of_experience					INTEGER				NOT NULL,
 	PRIMARY KEY(VAT_permanent),
-	FOREIGN KEY (VAT_permanent)							REFERENCES		doctor(VAT_doctor)
+	FOREIGN KEY (VAT_permanent)							REFERENCES		doctor(VAT_doctor) ON UPDATE CASCADE ON DELETE CASCADE
 
 );
 
@@ -112,8 +112,8 @@ CREATE TABLE trainee_doctor (
 	VAT_trainee							VARCHAR(255)		NOT NULL,
 	supervisor							VARCHAR(255)		NOT NULL,
 	PRIMARY KEY(VAT_trainee),
-	FOREIGN KEY (VAT_trainee)							REFERENCES		doctor(VAT_doctor),
-	FOREIGN KEY (supervisor)							REFERENCES		permanent_doctor(VAT_permanent)
+	FOREIGN KEY (VAT_trainee)							REFERENCES		doctor(VAT_doctor) ON UPDATE CASCADE ON DELETE CASCADE,
+	FOREIGN KEY (supervisor)							REFERENCES		permanent_doctor(VAT_permanent) ON DELETE CASCADE SET NULL
 
 );
 
@@ -125,7 +125,7 @@ CREATE TABLE supervision_report (
 	report_evaluation					INTEGER				NOT NULL,
 	CHECK (report_evaluation between 1 and 5),
 	PRIMARY KEY (VAT_trainee, date_timestamp),
-	FOREIGN KEY (VAT_trainee)							REFERENCES		trainee_doctor(VAT_trainee)
+	FOREIGN KEY (VAT_trainee)							REFERENCES		trainee_doctor(VAT_trainee) ON UPDATE CASCADE SET NULL
 
 );
 
@@ -134,7 +134,7 @@ CREATE TABLE appointment (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
 	VAT_client							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
+	date_timestamp							DATE				NOT NULL,
 	appointment_description				VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp),
 	FOREIGN KEY (VAT_doctor)							REFERENCES		doctor(VAT_doctor) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -145,7 +145,7 @@ CREATE TABLE appointment (
 CREATE TABLE consultation (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE				NOT NULL,
+	date_timestamp							DATE				NOT NULL,
 	SOAP_S								VARCHAR(255)		NOT NULL,
 	SOAP_O								VARCHAR(255)		NOT NULL,
 	SOAP_A								VARCHAR(255)		NOT NULL,
