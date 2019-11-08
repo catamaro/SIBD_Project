@@ -1,14 +1,35 @@
-drop view if exists fact_consults;
+DROP VIEW IF EXISTS fact_consults;
+DROP VIEW IF EXISTS dim_date;
+DROP VIEW IF EXISTS dim_client;
+DROP VIEW IF EXISTS dim_location_client;
 
-create view fact_consults as
-	select  dc.client_VAT as VAT
+/*********************************view 1*********************************/
+CREATE VIEW dim_date AS 
+	SELECT DISTINCT a.date_timestamp, DAY(a.date_timestamp), MONTH(a.date_timestamp), YEAR(a.date_timestamp)
+	FROM	appointment AS a;
+	
+/*********************************view 2*********************************/
+CREATE VIEW dim_client AS
+
+	SELECT client_VAT, client_gender, client_age
+	FROM client;
+
+/*********************************view 3*********************************/
+CREATE VIEW dim_location_client AS
+
+	SELECT DISTINCT client_zip, client_city
+	FROM client;
+    
+/*********************************view 4*********************************/
+CREATE VIEW fact_consults as
+	SELECT  dc.client_VAT as VAT
 		  , dd.date_timestamp as date
 		  , dlc.client_zip as zip
 		  , count(distinct pic.procedure_name_) as num_procedures
 		  , count(distinct p.medication_name, p.medication_lab, p.ID) as num_medications
 		  , count(distinct cd.ID) as num_diagnostic_codes
 		 
-	from dim_date dd, dim_client dc, dim_location_client dlc, appointment a
+	FROM dim_date dd, dim_client dc, dim_location_client dlc, appointment a
 	left join client clt
 		on a.VAT_client = clt.client_VAT
 	inner join consultation c
