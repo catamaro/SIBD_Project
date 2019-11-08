@@ -1,3 +1,5 @@
+USE proj_part2;
+
 /*INSERT EMPLOYEE*/
 /*employee_VAT | employee_name | employee_birth_date | employee_street | employee_city | employee_zip | employee_IBAN | employee_salary |*/
 INSERT INTO employee VALUES ('628-22-9602', 'Cassius Lydiatt', '1967-8-31', 'Weeping Birch', 'Banquero', '3303', 'GR55 2129 201W VPZF 9YEU I2SS FJI', 1164.12);
