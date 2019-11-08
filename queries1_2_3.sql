@@ -1,4 +1,5 @@
-﻿
+﻿/*query 1*/
+
 SELECT c.client_VAT, c.client_name, p.phone_number
     FROM client AS c, appointment AS a, phone_number_client AS p
     WHERE c.client_VAT = p.client_VAT
