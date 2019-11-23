@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 USE proj_part2;
 /* DROP ALL TABLES IF EXIST*/
+=======
+
+>>>>>>> calamar
 DROP TABLE IF EXISTS procedure_charting;
 DROP TABLE IF EXISTS teeth;
 DROP TABLE IF EXISTS procedure_radiology;
