@@ -30,7 +30,7 @@ CREATE TABLE employee (
 
 	employee_VAT						VARCHAR(255)		NOT NULL,
 	employee_name						VARCHAR(255)		NOT NULL,
-	employee_birth_date				DATETIME				NOT NULL,
+	employee_birth_date				DATE   				NOT NULL,
 	employee_street					VARCHAR(255)		NOT NULL,
 	employee_city						VARCHAR(255)		NOT NULL, 
 	employee_zip						VARCHAR(255)		NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE client (
 
 	client_VAT							VARCHAR(255)		NOT NULL,
 	client_name							VARCHAR(255)		NOT NULL,
-	client_birth_date					DATETIME				NOT NULL,
+	client_birth_date					DATE     			NOT NULL,
 	client_street						VARCHAR(255)		NOT NULL,
 	client_city							VARCHAR(255)		NOT NULL,
 	client_zip							VARCHAR(255)		NOT NULL,
