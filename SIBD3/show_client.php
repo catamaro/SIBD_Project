@@ -1,26 +1,50 @@
 <html>
  <body>
 <?php
- $dbhost = "localhost";
- $dbuser = "root";
- $dbpass = "proj_part3";
- $db = "proj_part2";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
-   
-$client_VAT = $_REQUEST['client_vat'];
+ //$dbhost = "localhost";
+ //$dbuser = "root";
+ //$dbpass = "proj_part3";
+ //$db = "proj_part2";
+ //$conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+ $host = "db.tecnico.ulisboa.pt";
+ $user = "ist187077";
+ $pass = "qrtr9733";
+ $dsn = "mysql:host=$host;dbname=$user";
+
+ try{
+	 $conn = new PDO($dsn, $user, $pass);
+ }
+ catch(PDOException $exception){
+	 echo("<p>Error: ");
+	 echo($exception->getMessage());
+	 echo("</p>");
+	 exit();
+ }
+
+$client_VAT = $_REQUEST['client_VAT'];
 $client_name = $_REQUEST['client_name'];
 $client_street = $_REQUEST['client_address'];
 $date_timestamp = $_REQUEST['date_appointment'];
-$csql = "SELECT *
-		FROM client as c
-		WHERE client_vat LIKE '%$client_VAT%'
-		AND c.client_name LIKE '%$client_name%'
-		AND c.client_street LIKE '%$client_street%'";
-echo("<h2>Clients found:</h2>");
+$csql = "SELECT client_VAT, client_name
+		FROM client 
+		WHERE client_VAT LIKE '%$client_VAT%'
+		AND client_name LIKE '%$client_name%'
+		AND client_street LIKE '%$client_street%'";
+
 $crows = $conn->query($csql);
-echo("<p>$csql</p>");
+if ($crows == FALSE)
+{
+	$info = $conn->errorInfo();
+	echo("<p>Error: {$info[2]}</p>");
+	exit();
+}
+echo("<h2>Clients found:</h2>");
 foreach ($crows as $row){
-	echo $row['client_name'] ."<br>\n";
+	$c_VAT = $row['client_VAT'];
+	$c_name = $row['client_name'];
+	echo("<br><a href=\"show_appointments.php?client_VAT=");
+	echo($c_VAT);
+	echo("\">$c_name</a></br>\n");
 }
 
 $dsql = "SELECT DISTINCT employee_name
@@ -28,7 +52,6 @@ $dsql = "SELECT DISTINCT employee_name
 		ON e.employee_VAT = a.VAT_doctor";
 
 echo("<h2>Doctor found:</h2>");
-echo("<p>$dsql</p>");
 $drows = $conn->query($dsql);
 
 foreach ((array)$drows as $row){
