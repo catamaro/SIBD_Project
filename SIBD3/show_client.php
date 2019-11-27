@@ -2,11 +2,11 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
  <body>
 <?php
- /*$dbhost = "localhost";
- $dbuser = "root";
- $dbpass = "proj_part3";
- $db = "proj_part2";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);*/
+ //$dbhost = "localhost";
+ //$dbuser = "root";
+ //$dbpass = "proj_part3";
+ //$db = "proj_part2";
+ //$conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
  $host = "db.tecnico.ulisboa.pt";
  $user = "ist187077";
  $pass = "qrtr9733";
@@ -36,7 +36,13 @@ $csql = "SELECT *
 
 echo("<h2>Clinic Clients: </h2>");
 $crows = $conn->query($csql);
- if(mysqli_num_rows($crows) > 0): ?>
+if ($crows == FALSE)
+{
+	$info = $conn->errorInfo();
+	echo("<p>Error: {$info[2]}</p>");
+	exit();
+}
+if(mysqli_num_rows($crows) > 0): ?>
 
 <form action="selected_client.php" method="post">
 <table class="table">
@@ -48,7 +54,6 @@ $crows = $conn->query($csql);
 	<th scope="col">Address(Street, City, Zip)</th>
 	<th scope="col">Gender</th>
 	<th scope="col">Age</th>
-	<th scope="col">Select</th>
 
    </tr>
   </thead>
@@ -57,13 +62,12 @@ $crows = $conn->query($csql);
  <?php foreach ($crows as $row): ?>
  
 	<tr> 
-	<td><?php echo $row['client_VAT']; ?></a></td> 
-	<td><?php echo $row['client_name']; ?></td> 
+	<td><?php echo $row['client_VAT']; ?></td> 
+	<td><?php echo <a href=\"show_appointments.php?client_VAT=\"$row['client_VAT']\">$row['client_name'];</a>?></td> 
 	<td><?php echo $row['client_birth_date']; ?></td> 
 	<td><?php echo $row['client_street']; echo " , "; echo $row['client_city']; echo " , "; echo $row['client_zip']; ?></td> 
 	<td><?php echo $row['client_gender']; ?></td> 
 	<td><?php echo $row['client_age']; ?></td>
-	<td><input type="checkbox" name="vat[]" value="<?php echo $row['client_VAT']; ?>"> </td>
 	
 	</tr>
  <?php endforeach;?>
