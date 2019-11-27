@@ -5,7 +5,7 @@
  
  table {
   display: block;
-  height: 500px;
+  height: 250px;
   overflow-y: scroll;
 }
 
