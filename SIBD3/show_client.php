@@ -36,13 +36,14 @@ $csql = "SELECT *
 
 echo("<h2>Clinic Clients: </h2>");
 $crows = $conn->query($csql);
+$c_rows = $crows->rowCount();
 if ($crows == FALSE)
 {
 	$info = $conn->errorInfo();
 	echo("<p>Error: {$info[2]}</p>");
 	exit();
 }
-if(mysqli_num_rows($crows) > 0): ?>
+if($c_rows > 0): ?>
 
 <form action="selected_client.php" method="post">
 <table class="table">
@@ -59,21 +60,19 @@ if(mysqli_num_rows($crows) > 0): ?>
   </thead>
   <tbody>
  
- <?php foreach ($crows as $row): ?>
- 
+ <?php foreach ($crows as $row): 
+	$vat = $row['client_VAT']; ?>
 	<tr> 
 	<td><?php echo $row['client_VAT']; ?></td> 
-	<td><?php echo <a href=\"show_appointments.php?client_VAT=\"$row['client_VAT']\">$row['client_name'];</a>?></td> 
+	<td><a href="client_page.php?client_VAT=<?php echo $vat ?>"> <?php echo $row['client_name']?></a></td>
 	<td><?php echo $row['client_birth_date']; ?></td> 
 	<td><?php echo $row['client_street']; echo " , "; echo $row['client_city']; echo " , "; echo $row['client_zip']; ?></td> 
 	<td><?php echo $row['client_gender']; ?></td> 
 	<td><?php echo $row['client_age']; ?></td>
-	
 	</tr>
  <?php endforeach;?>
   </tbody>
 </table>
- <p><input type="submit" value="Go to Client Page"></p>
  </form>
 
  <?php 
