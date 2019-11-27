@@ -30,7 +30,7 @@ CREATE TABLE employee (
 
 	employee_VAT						VARCHAR(255)		NOT NULL,
 	employee_name						VARCHAR(255)		NOT NULL,
-	employee_birth_date					DATE				NOT NULL,
+	employee_birth_date				DATE   				NOT NULL,
 	employee_street					VARCHAR(255)		NOT NULL,
 	employee_city						VARCHAR(255)		NOT NULL, 
 	employee_zip						VARCHAR(255)		NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE client (
 
 	client_VAT							VARCHAR(255)		NOT NULL,
 	client_name							VARCHAR(255)		NOT NULL,
-	client_birth_date					DATE				NOT NULL,
+	client_birth_date					DATE     			NOT NULL,
 	client_street						VARCHAR(255)		NOT NULL,
 	client_city							VARCHAR(255)		NOT NULL,
 	client_zip							VARCHAR(255)		NOT NULL,
@@ -122,7 +122,7 @@ CREATE TABLE trainee_doctor (
 CREATE TABLE supervision_report (
 
 	VAT_trainee							VARCHAR(255),
-	date_timestamp							DATE				NOT NULL,
+	date_timestamp						DATETIME				NOT NULL,
 	report_description				VARCHAR(255)		NOT NULL,
 	report_evaluation					INTEGER				NOT NULL,
 	CHECK (report_evaluation between 1 and 5),
@@ -136,7 +136,7 @@ CREATE TABLE appointment (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
 	VAT_client							VARCHAR(255)		NOT NULL,
-	date_timestamp							DATE				NOT NULL,
+	date_timestamp						DATETIME				NOT NULL,
 	appointment_description			VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp),
 	FOREIGN KEY (VAT_doctor)							REFERENCES		doctor(VAT_doctor) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -147,7 +147,7 @@ CREATE TABLE appointment (
 CREATE TABLE consultation (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp							DATE				NOT NULL,
+	date_timestamp						DATETIME				NOT NULL,
 	SOAP_S								VARCHAR(255)		NOT NULL,
 	SOAP_O								VARCHAR(255)		NOT NULL,
 	SOAP_A								VARCHAR(255)		NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE consultation (
 CREATE TABLE consultation_assistant (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp						DATE					NOT NULL,
+	date_timestamp						DATETIME					NOT NULL,
 	VAT_nurse							VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp),
 	FOREIGN KEY (VAT_doctor,date_timestamp)				REFERENCES		consultation(VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -191,7 +191,7 @@ CREATE TABLE diagnostic_code_relation (
 CREATE TABLE consultation_diagnostic (
 
 	VAT_doctor							VARCHAR(255)		NOT NULL,
-	date_timestamp							DATE				NOT NULL,
+	date_timestamp						DATETIME				NOT NULL,
 	ID										VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (VAT_doctor, date_timestamp, ID),
 	FOREIGN KEY (VAT_doctor, date_timestamp)			REFERENCES		consultation(VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -212,7 +212,7 @@ CREATE TABLE prescription (
 	medication_name						VARCHAR(255)		NOT NULL,
 	medication_lab							VARCHAR(255)		NOT NULL,
 	VAT_doctor								VARCHAR(50)			NOT NULL,
-	date_timestamp								DATE				NOT NULL,
+	date_timestamp							DATETIME				NOT NULL,
 	ID											VARCHAR(50)			NOT NULL,
 	dosage									VARCHAR(50)			NOT NULL,
 	prescription_description			VARCHAR(255)		NOT NULL,
@@ -234,7 +234,7 @@ CREATE TABLE procedure_in_consultation (
 
 	procedure_name_						VARCHAR(255)		NOT NULL,
 	VAT_doctor								VARCHAR(255)		NOT NULL,
-	date_timestamp								DATE				NOT NULL,
+	date_timestamp							DATETIME				NOT NULL,
 	p_in_c_description					VARCHAR(255)		NOT NULL,
 	PRIMARY KEY (procedure_name_, VAT_doctor, date_timestamp),
 	FOREIGN KEY (procedure_name_)							REFERENCES		procedure_(procedure_name_) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -246,7 +246,7 @@ CREATE TABLE procedure_radiology (
 
 	procedure_name_						VARCHAR(255)		NOT NULL,
 	VAT_doctor								VARCHAR(255)		NOT NULL,
-	date_timestamp								DATE				NOT NULL,
+	date_timestamp							DATETIME				NOT NULL,
 	file_path								VARCHAR(255)		NOT NULL,					
 	PRIMARY KEY (procedure_name_, VAT_doctor, date_timestamp, file_path),
 	FOREIGN KEY (procedure_name_, VAT_doctor, date_timestamp)	REFERENCES procedure_in_consultation(procedure_name_, VAT_doctor, date_timestamp) ON UPDATE CASCADE ON DELETE CASCADE
@@ -266,7 +266,7 @@ CREATE TABLE procedure_charting (
 
 	procedure_name_						VARCHAR(255)		NOT NULL,
 	VAT_doctor								VARCHAR(255)		NOT NULL,
-	date_timestamp								DATE				NOT NULL,
+	date_timestamp							DATETIME				NOT NULL,
 	quadrant									INTEGER				NOT NULL,
 	number									INTEGER				NOT NULL,
 	procedure_charting_descp			VARCHAR(255)		NOT NULL,	
