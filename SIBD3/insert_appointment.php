@@ -1,12 +1,25 @@
 <html>
  <body>
 <?php
- $dbhost = "localhost";
+ /*$dbhost = "localhost";
  $dbuser = "root";
  $dbpass = "proj_part3";
  $db = "proj_part2";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
- 
+ $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);*/
+ $host = "db.tecnico.ulisboa.pt";
+ $user = "ist187077";
+ $pass = "qrtr9733";
+ $dsn = "mysql:host=$host;dbname=$user";
+
+ try{
+	 $conn = new PDO($dsn, $user, $pass);
+ }
+ catch(PDOException $exception){
+	 echo("<p>Error: ");
+	 echo($exception->getMessage());
+	 echo("</p>");
+	 exit();
+ }
 
 if(!empty($_POST['doc_vat'])) {
 

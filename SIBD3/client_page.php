@@ -13,7 +13,7 @@
  
  <body>
 <?php
- /*$dbhost = "localhost";
+/*$dbhost = "localhost";
  $dbuser = "root";
  $dbpass = "proj_part3";
  $db = "proj_part2";
