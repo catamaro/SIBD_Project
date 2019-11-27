@@ -25,6 +25,7 @@
                       FROM appointment 
                       WHERE date_timestamp = '$date' AND VAT_doctor = '$doctor'";
         $consverification = $conn->query($consverifsql);
+        $consrows = $consverification->rowCount();
         $appdetails = $conn->query($appdetsql);
         if ($appdetails == FALSE)
         {
@@ -41,11 +42,18 @@
             echo("<br>Doctor: $doctor</br>");
             echo("<br>Description: $description</br>");
             echo("<br></br>");
-            if (mysql_num_rows($consverification) == 0){
-                echo("<form action=\"new_consultation.php\" method=\"post\">");
+            if ($consrows == 0){
+                echo("<form action=\"create_consultation.php?date_timestamp=$date&doctor=$doctor\" method=\"post\">");
                 echo("<input type=\"submit\" value=\"New Consultation\"></form>\n");
             }
         }
+        /*foreach ($consverification as $row){
+            if ($row['c.VAT_doctor'] == NULL){
+                echo("<form action=\"create_consultation.php?date_timestamp=$date&doctor=$doctor\" method=\"post\">");
+                echo("<input type=\"submit\" value=\"New Consultation\"></form>\n");
+            }
+        }*/
+        $conn->close();
         ?>
     </body>
 </html>

@@ -67,6 +67,7 @@
             echo($doctor);
             echo("\">Date: $date Doctor: $doctor</a></br>\n");
         }
+        $conn->close();
     ?>
     </body>
 </html>
