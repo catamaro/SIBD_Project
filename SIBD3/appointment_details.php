@@ -1,20 +1,26 @@
 <html>
     <body>
     <?php
-        $host = "db.tecnico.ulisboa.pt";
-        $user = "ist187077";
-        $pass = "qrtr9733";
-        $dsn = "mysql:host=$host;dbname=$user";
-       
-        try{
-            $conn = new PDO($dsn, $user, $pass);
-        }
-        catch(PDOException $exception){
-            echo("<p>Error: ");
-            echo($exception->getMessage());
-            echo("</p>");
-            exit();
-        }
+         $host = "localhost";
+		 $user = "root";
+		 $pass = "proj_part3";
+		 $db = "proj_part2";
+		 $dsn = "mysql:host=$host;dbname=$db";
+
+		 /*$host = "db.tecnico.ulisboa.pt";
+		 $user = "ist187077";
+		 $pass = "qrtr9733";
+		 $dsn = "mysql:host=$host;dbname=$user";*/
+
+		 try{
+			 $conn = new PDO($dsn, $user, $pass);
+		 }
+		 catch(PDOException $exception){
+			 echo("<p>Error: ");
+			 echo($exception->getMessage());
+			 echo("</p>");
+			 exit();
+		 }
         $date = $_REQUEST['date_timestamp'];
         $doctor = $_REQUEST['VAT_doctor'];
         $consverifsql = "SELECT c.VAT_doctor
@@ -53,7 +59,6 @@
                 echo("<input type=\"submit\" value=\"New Consultation\"></form>\n");
             }
         }*/
-        $conn->close();
         ?>
     </body>
 </html>

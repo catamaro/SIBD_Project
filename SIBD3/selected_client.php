@@ -56,17 +56,29 @@ $arows = $conn->query($asql);
 
 <h2>Client: </h2>
 </br>
- <form action="insert_client.php" method="post">
- <p>Client_VAT: <input readonly type="text" name="client_vat"  value= "<?php echo $crow['client_VAT'];?>" /></p>
- <p>Client Name: <input readonly type="text" name="client_name" value= "<?php echo $crow['client_name'];?>" /></p>
- <p>Client Birth-Date: <input readonly type="date" name="client_birth_date" value= "<?php echo $crow['client_birth_date'];?>" /></p>
- <p>Client Street: <input readonly type="text" name="client_street" value= "<?php echo $crow['client_street'];?>" /></p>
-  <p>Client City: <input readonly type="text" name="client_city" value= "<?php echo $crow['client_city'];?>" /></p>
- <p>Client Zip: <input readonly type="text" name="client_zip" value= "<?php echo $crow['client_zip'];?>" /></p>
- <p>Client Gender: <input readonly type="text" name="client_gender" value= "<?php echo $crow['client_gender'];?>" /></p>
- <p>Client Age: <input readonly type="text" name="client_age" value= "<?php echo $crow['client_age'];?>" /></p>
- <p><input type="submit" value="Edit"/>                             </p>
- </form>
+<table class="table">
+  <thead>
+    <tr>
+    <th scope="col">VAT</th>
+    <th scope="col">Name</th>
+    <th scope="col">Birth-Date</th>
+	<th scope="col">Address(Street, City, Zip)</th>
+	<th scope="col">Gender</th>
+	<th scope="col">Age</th>
+
+   </tr>
+  </thead>
+  <tbody>
+	<tr> 
+	<td><?php echo $crow['client_VAT']; ?></td> 
+	<td><?php echo $crow['client_name']; ?></td> 
+	<td><?php echo $crow['client_birth_date']; ?></td> 
+	<td><?php echo $crow['client_street']; echo " , "; echo $crow['client_city']; echo " , "; echo $crow['client_zip']; ?></td> 
+	<td><?php echo $crow['client_gender']; ?></td> 
+	<td><?php echo $crow['client_age']; ?></td>
+	</tr>
+  </tbody>
+</table>
 
 <?php echo("<h2>Appointments: </h2>");
  if(mysqli_num_rows($arows) > 0): ?>

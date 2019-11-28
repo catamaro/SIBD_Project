@@ -3,15 +3,16 @@
 
  <body>
 <?php
- /*$dbhost = "localhost";
- $dbuser = "root";
- $dbpass = "proj_part3";
+ $host = "localhost";
+ $user = "root";
+ $pass = "proj_part3";
  $db = "proj_part2";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);*/
- $host = "db.tecnico.ulisboa.pt";
+ $dsn = "mysql:host=$host;dbname=$db";
+
+ /*$host = "db.tecnico.ulisboa.pt";
  $user = "ist187077";
  $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";
+ $dsn = "mysql:host=$host;dbname=$user";*/
 
  try{
 	 $conn = new PDO($dsn, $user, $pass);
@@ -37,8 +38,9 @@ $dsql = "SELECT e.employee_VAT, e.employee_name
 		WHERE '$combinedDT' BETWEEN  a.date_timestamp AND DATE_ADD(a.date_timestamp, INTERVAL 1 HOUR));";
 
 $drows = $conn->query($dsql);
+$d_rows = $drows->rowCount();
 
- if(mysqli_num_rows($drows) > 0): ?>
+if($d_rows > 0): ?>
   <h2>Let's mark an appointment </h2>
   </br>
    <h3>Your VAT: <?php echo $client_VAT ?> </h3>
@@ -76,12 +78,11 @@ $drows = $conn->query($dsql);
 else: 
  echo("<p>No doctor avaiable. Click to select other time</p>");?>
  
-<form action="selected_client.php" method="post">
-	<input hidden type="text" name="vat[]" value=<?php echo $client_VAT ?>
+<form action="client_page.php" method="post">
+	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>
 	<p><input type="submit" value="Change time"/></p>
 </form>
-  <?php endif;
-  $conn->close();?>
+  <?php endif;?>
 
  </body>
 </html>
