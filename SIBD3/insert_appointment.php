@@ -22,18 +22,13 @@
 	 exit();
  }
 
-if(!empty($_POST['doc_vat'])) {
-
-        foreach($_POST['doc_vat'] as $value){
-            $VAT_doctor = $value;
-        }
-}
+$VAT_doctor = $_REQUEST['doc_vat'];
 $VAT_client = $_REQUEST['client_VAT'];
 $date_timestamp = $_REQUEST['date_timestamp'];
 $appointment_description = $_REQUEST['descp'];
 
-
 $sql = "insert into appointment values ('$VAT_doctor', '$VAT_client', '$date_timestamp', '$appointment_description');";
+
 
 if ($conn->query($sql) == TRUE) {
     echo "New record created successfully";

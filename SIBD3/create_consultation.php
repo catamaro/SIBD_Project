@@ -18,10 +18,10 @@
             <h2>New Consultation:</h2>
             <p>VAT_Doctor: <input readonly type="text" name="vat_doctor" value="<?php echo($doctor) ?>" /></p>
             <p>Date: <input readonly type="text" name="date" value="<?php echo($date) ?>"/></p>
-            <p>S: <textarea class="userInput" name="s"></textarea></p>
-            <p>O: <textarea class="userInput" name="o"></textarea></p>
-            <p>A: <textarea class="userInput" name="a"></textarea></p>
-            <p>P: <textarea class="userInput" name="p"></textarea></p>
+            <p>S: <textarea required class="userInput" name="s"></textarea></p>
+            <p>O: <textarea required class="userInput" name="o"></textarea></p>
+            <p>A: <textarea required class="userInput" name="a"></textarea></p>
+            <p>P: <textarea required class="userInput" name="p"></textarea></p>
             <p><input type="submit" value="Insert"/></p>
         </form>
     </body>
