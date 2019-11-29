@@ -1,12 +1,26 @@
 <html>
  <body>
 <?php
- $dbhost = "localhost";
- $dbuser = "root";
- $dbpass = "proj_part3";
+ $host = "localhost";
+ $user = "root";
+ $pass = "proj_part3";
  $db = "proj_part2";
- $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
- 
+ $dsn = "mysql:host=$host;dbname=$db";
+
+ /*$host = "db.tecnico.ulisboa.pt";
+ $user = "ist187077";
+ $pass = "qrtr9733";
+ $dsn = "mysql:host=$host;dbname=$user";*/
+
+ try{
+	 $conn = new PDO($dsn, $user, $pass);
+ }
+ catch(PDOException $exception){
+	 echo("<p>Error: ");
+	 echo($exception->getMessage());
+	 echo("</p>");
+	 exit();
+ }
 
 if(!empty($_POST['doc_vat'])) {
 
@@ -21,13 +35,11 @@ $appointment_description = $_REQUEST['descp'];
 
 $sql = "insert into appointment values ('$VAT_doctor', '$VAT_client', '$date_timestamp', '$appointment_description');";
 
-if ($conn->query($sql) === TRUE) {
+if ($conn->query($sql) == TRUE) {
     echo "New record created successfully";
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
-
-$conn->close();
 ?>
 
  <form action="client.php" method="post">

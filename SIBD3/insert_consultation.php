@@ -1,20 +1,26 @@
 <html>
     <body>
     <?php
-        $host = "db.tecnico.ulisboa.pt";
-        $user = "ist187077";
-        $pass = "qrtr9733";
-        $dsn = "mysql:host=$host;dbname=$user";
-    
-        try{
-            $conn = new PDO($dsn, $user, $pass);
-        }
-        catch(PDOException $exception){
-            echo("<p>Error: ");
-            echo($exception->getMessage());
-            echo("</p>");
-            exit();
-        }
+         $host = "localhost";
+		 $user = "root";
+		 $pass = "proj_part3";
+		 $db = "proj_part2";
+		 $dsn = "mysql:host=$host;dbname=$db";
+
+		 /*$host = "db.tecnico.ulisboa.pt";
+		 $user = "ist187077";
+		 $pass = "qrtr9733";
+		 $dsn = "mysql:host=$host;dbname=$user";*/
+
+		 try{
+			 $conn = new PDO($dsn, $user, $pass);
+		 }
+		 catch(PDOException $exception){
+			 echo("<p>Error: ");
+			 echo($exception->getMessage());
+			 echo("</p>");
+			 exit();
+		 }
         
         $vat_doctor = $_REQUEST['vat_doctor'];
         $date = $_REQUEST['date'];
@@ -28,7 +34,6 @@
         } else {
             echo("Error: " . $sql . "<br>" . $conn->error);
         }
-        $conn->close();
     ?>
 
         <form action="client.php" method="post">
