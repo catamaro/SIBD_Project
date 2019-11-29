@@ -1,7 +1,8 @@
 <html>
     <body>
     <?php
-         $host = "localhost";
+
+     $host = "localhost";
 		 $user = "root";
 		 $pass = "proj_part3";
 		 $db = "proj_part2";
@@ -21,17 +22,12 @@
 			 echo("</p>");
 			 exit();
 		 }
+
         $date = $_REQUEST['date_timestamp'];
         $doctor = $_REQUEST['VAT_doctor'];
-        $consverifsql = "SELECT c.VAT_doctor
-                         FROM consultation AS c, appointment AS a 
-                         WHERE a.date_timestamp = '$date' AND a.VAT_doctor = '$doctor' 
-                         AND c.date_timestamp = a.date_timestamp AND c.VAT_doctor = a.VAT_doctor";
         $appdetsql = "SELECT VAT_client, appointment_description
                       FROM appointment 
                       WHERE date_timestamp = '$date' AND VAT_doctor = '$doctor'";
-        $consverification = $conn->query($consverifsql);
-        $consrows = $consverification->rowCount();
         $appdetails = $conn->query($appdetsql);
         if ($appdetails == FALSE)
         {
@@ -47,18 +43,15 @@
             echo("<br>Date: $date</br>");
             echo("<br>Doctor: $doctor</br>");
             echo("<br>Description: $description</br>");
-            echo("<br></br>");
-            if ($consrows == 0){
-                echo("<form action=\"create_consultation.php?date_timestamp=$date&doctor=$doctor\" method=\"post\">");
-                echo("<input type=\"submit\" value=\"New Consultation\"></form>\n");
-            }
         }
+
         /*foreach ($consverification as $row){
             if ($row['c.VAT_doctor'] == NULL){
                 echo("<form action=\"create_consultation.php?date_timestamp=$date&doctor=$doctor\" method=\"post\">");
                 echo("<input type=\"submit\" value=\"New Consultation\"></form>\n");
             }
         }*/
+
         ?>
     </body>
 </html>

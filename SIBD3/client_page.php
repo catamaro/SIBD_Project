@@ -36,8 +36,14 @@ $asql = "SELECT date_timestamp, VAT_doctor
         FROM appointment 
         WHERE VAT_client = '$client_VAT'
         GROUP BY date_timestamp";
+$consverifsql = "SELECT c.VAT_doctor
+                 FROM consultation AS c, appointment AS a 
+                 WHERE a.date_timestamp = '$date' AND a.VAT_doctor = '$doctor' 
+                 AND c.date_timestamp = a.date_timestamp AND c.VAT_doctor = a.VAT_doctor";
 $arows = $conn->query($asql);
 $a_count = $arows->rowCount();
+$consverification = $conn->query($consverifsql);
+$consrows = $consverification->rowCount();
 ?>
 
 <h2>Client Information: </h2>
@@ -84,6 +90,7 @@ if ($arows == FALSE)
     <th scope="col">Vat_Doctor</th>
     <th scope="col">Date</th>
     <th scope="col"></th>
+    <th scope="col"></th>
    </tr>
   </thead>
   <tbody>
@@ -93,7 +100,10 @@ if ($arows == FALSE)
 	<td><?php echo $row['VAT_doctor']; ?></td> 
 	<td><?php echo $row['date_timestamp']; ?></td> 
     <td><a href="appointment_details.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">See more</a></td>
-
+    <td>
+    <?php if ($consrows == 0) ?>
+        <a href="create_consultation.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">Register consultation</a>
+    </td>
 	</tr>
  <?php endforeach; ?>
  
@@ -160,7 +170,6 @@ endif;?>
 	<input hidden type="text" name="client_VAT" value= "<?php echo $crow['client_VAT'];?>"/>
 	<input type="date" name="date">
 	<input type="time" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
-
 	</br>
 	<p><input type="submit" value="Next"/></p>
 </form>
