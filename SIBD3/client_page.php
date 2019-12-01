@@ -80,8 +80,9 @@ if ($arows == FALSE)
     exit();
 } ?>
 
-<?php if($a_count > 0): ?>
+
 <div class="row" style="margin:0">
+<?php if($a_count > 0): ?>
 <div class="col-6"><h2>Previous appointments:</h2>
 <div class="table table-striped" style="overflow-y: auto; max-height: 300px;">
 <table class="table">
@@ -113,7 +114,10 @@ if ($arows == FALSE)
 </div>
 <?php
 else :
-	echo("<p>No Appointment found </p>");
+	echo("<div class=\"col-6\"><h2 >Previous consultations:</h2>
+			<p>No Appointment found </p>
+			</div>
+			</div>");
 endif;
 
 $consql = "SELECT c.date_timestamp, c.VAT_doctor
