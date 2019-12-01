@@ -9,7 +9,7 @@
   <p>Client City: <input required type="text" name="client_city"/></p>
  <p>Client Zip: <input required type="text" name="client_zip"/></p>
  <p>Client Gender: <input required type="text" name="client_gender"/></p>
- <p>Client Age: <input required type="text" name="client_age"/></p>
+ <p>Client Age: <input type="text" name="client_age"/></p>
  <p><input type="submit" value="Insert"/></p>
  </form>
  </body>
