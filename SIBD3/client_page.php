@@ -3,26 +3,22 @@
 
  <body>
 <?php
-/* $host = "localhost";
- $user = "root";
- $pass = "proj_part3";
- $db = "proj_part2";
- $dsn = "mysql:host=$host;dbname=$db";*/
 
- $host = "db.tecnico.ulisboa.pt";
- $user = "ist187077";
- $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "SIBD";
+$dsn = "mysql:host=$host;dbname=$db";
 
- try{
-	 $conn = new PDO($dsn, $user, $pass);
- }
- catch(PDOException $exception){
-	 echo("<p>Error: ");
-	 echo($exception->getMessage());
-	 echo("</p>");
-	 exit();
- }
+try{
+	$conn = new PDO($dsn, $user, $pass);
+}
+catch(PDOException $exception){
+	echo("<p>Error: ");
+	echo($exception->getMessage());
+	echo("</p>");
+	exit();
+}
 
 $client_VAT = $_REQUEST['client_VAT'];
 
@@ -186,7 +182,7 @@ endif;?>
   </div>
   <div class="col-4">
   <div class="form-group">
-      <input type="time" class="form-control" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
+      <input type="time" step='3600' class="form-control" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
   </div>
   </div>
 	</br>

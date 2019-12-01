@@ -1,18 +1,20 @@
+<<<<<<< HEAD
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
  <body>
 <?php
- /*$host = "localhost";
- $user = "root";
- $pass = "proj_part3";
- $db = "proj_part2";
- $dsn = "mysql:host=$host;dbname=$db";*/
 
- $host = "db.tecnico.ulisboa.pt";
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "SIBD";
+$dsn = "mysql:host=$host;dbname=$db";
+
+ /*$host = "db.tecnico.ulisboa.pt";
  $user = "ist187077";
  $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";
+ $dsn = "mysql:host=$host;dbname=$user";*/
 
  try{
 	 $conn = new PDO($dsn, $user, $pass);
@@ -47,7 +49,6 @@ if($d_rows > 0): ?>
     </br>
  <h3>Doctors avaiable for <?php echo $combinedDT ?>: </h3>
 <form action="insert_appointment.php" method="post">
-<div class="table table-striped">
 <table class="table">
   <thead>
     <tr>
@@ -70,22 +71,18 @@ if($d_rows > 0): ?>
  <?php endforeach;?>
   </tbody>
 </table>
-
 <input hidden type="text" name="date_timestamp" value="<?php echo $combinedDT ?>" />
 <input hidden type="text" name="client_VAT" value="<?php echo $client_VAT ?>" />
-<div class="form-group">
-	<label for="descp">Appointment description:</label>
-	<input required type="text" class="form-control" name="descp">
-</div>
- <p><input type="submit" class="btn btn-info" value="Create appointment"></p>
+ <p>Appointment description: <input required type="text" name="descp"/></p>
+ <p><input type="submit" value="Create appointment"></p>
  </form>
   <?php
 else: 
  echo("<p>No doctor avaiable. Click to select other time</p>");?>
  
 <form action="client_page.php" method="post">
-	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>>
-	<p><input type="submit" class="btn btn-info" value="Change time"/></p>
+	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>
+	<p><input type="submit" value="Change time"/></p>
 </form>
   <?php endif;?>
 

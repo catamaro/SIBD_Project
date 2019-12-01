@@ -3,26 +3,26 @@
  <body>
 <?php
 
- /*$host = "localhost";
- $user = "root";
- $pass = "proj_part3";
- $db = "proj_part2";
- $dsn = "mysql:host=$host;dbname=$db";*/
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "SIBD";
+$dsn = "mysql:host=$host;dbname=$db";
 
- $host = "db.tecnico.ulisboa.pt";
+ /*$host = "db.tecnico.ulisboa.pt";
  $user = "ist187077";
  $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";
+ $dsn = "mysql:host=$host;dbname=$user";*/
 
- try{
-	 $conn = new PDO($dsn, $user, $pass);
- }
- catch(PDOException $exception){
-	 echo("<p>Error: ");
-	 echo($exception->getMessage());
-	 echo("</p>");
-	 exit();
- }
+try{
+	$conn = new PDO($dsn, $user, $pass);
+}
+catch(PDOException $exception){
+	echo("<p>Error: ");
+	echo($exception->getMessage());
+	echo("</p>");
+exit();
+}
 
 $client_VAT = $_REQUEST['client_VAT'];
 $client_name = $_REQUEST['client_name'];
