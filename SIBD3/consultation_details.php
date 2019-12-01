@@ -48,19 +48,25 @@
             $medication_lab = $row['medication_lab'];
             $dosage = $row['dosage'];
             $prescription_description = $row['prescription_description'];
-            echo("<h4>SOAP</h4>");
-            echo("<br>S: $S</br>");
-            echo("<br>O: $O</br>");
-            echo("<br>A: $A</br>");
-            echo("<br>P: $P</br>");
-            echo("<h4>Diagnostic</h4>");
-            echo("<br>ID: $id</br>");
-            echo("<br>Description: $diagnostic_description</br>");
-            echo("<h4>Prescription</h4>");
-            echo("<br>Medication name: $medication_name</br>");
-            echo("<br>Medication lab: $medication_lab</br>");
-            echo("<br>Dosage: $dosage</br>");
-            echo("<br>Description: $prescription_description</br>");
+            if (!empty($S)){
+                echo("<h4>SOAP</h4>");
+                echo("<br>S: $S</br>");
+                echo("<br>O: $O</br>");
+                echo("<br>A: $A</br>");
+                echo("<br>P: $P</br>");
+            }
+            if (!empty($id)){
+                echo("<h4>Diagnostic</h4>");
+                echo("<br>ID: $id</br>");
+                echo("<br>Description: $diagnostic_description</br>");
+            }
+            if (!empty($dosage)){
+                echo("<h4>Prescription</h4>");
+                echo("<br>Medication name: $medication_name</br>");
+                echo("<br>Medication lab: $medication_lab</br>");
+                echo("<br>Dosage: $dosage</br>");
+                echo("<br>Description: $prescription_description</br>");
+            }
         }
         ?>
     </body>

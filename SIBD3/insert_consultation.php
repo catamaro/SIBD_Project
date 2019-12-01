@@ -59,14 +59,6 @@
                 echo("Error: " . $diagnostic_sql . "<br>" . $conn->error);
             }
         }
-        if (!empty($medication_name)){
-            $med_sql = "INSERT INTO medication VALUES ('$medication_name', '$medication_lab')";
-            if ($conn->query($med_sql) == TRUE) {
-                echo("New record for medication created successfully");
-            } else {
-                echo("Error: " . $med_sql . "<br>" . $conn->error);
-            }
-        }
         if (!empty($presc_id)){
             $presc_sql = "INSERT INTO prescription VALUES ('$medication_name', '$medication_lab', '$vat_doctor', '$date', '$presc_id', '$dosage', '$prescription_description')";
             if ($conn->query($presc_sql) == TRUE) {
