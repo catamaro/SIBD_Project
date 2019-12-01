@@ -4,21 +4,21 @@
  <body>
 <?php
 
- $host = "localhost";
- $user = "root";
- $pass = "proj_part3";
- $db = "proj_part2";
- $dsn = "mysql:host=$host;dbname=$db";
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "SIBD";
+$dsn = "mysql:host=$host;dbname=$db";
 
- try{
-	 $conn = new PDO($dsn, $user, $pass);
- }
- catch(PDOException $exception){
-	 echo("<p>Error: ");
-	 echo($exception->getMessage());
-	 echo("</p>");
-	 exit();
- }
+try{
+	$conn = new PDO($dsn, $user, $pass);
+}
+catch(PDOException $exception){
+	echo("<p>Error: ");
+	echo($exception->getMessage());
+	echo("</p>");
+	exit();
+}
 
 $client_VAT = $_REQUEST['client_VAT'];
 
@@ -165,13 +165,8 @@ $consql = "SELECT c.date_timestamp, c.VAT_doctor
    </div>
 <?php
 else :
-<<<<<<< HEAD
-	echo("<div class=\"col-6\"><h2>Previous consultations:</h2>
-			<p>No Consultation found </p>
-=======
 	echo("<div class=\"col-6\"><h2 >Previous consultations:</h2>
 			<p>No consultation found </p>
->>>>>>> d51476477f005183c79393eb4637dc1944dbea07
 			</div>
 			</div>");
 endif;?>

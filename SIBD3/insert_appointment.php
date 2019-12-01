@@ -1,11 +1,12 @@
 <html>
  <body>
 <?php
- $host = "localhost";
- $user = "root";
- $pass = "";
- $db = "SIBD
- $dsn = "mysql:host=$host;dbname=$db";
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "SIBD";
+$dsn = "mysql:host=$host;dbname=$db";
 
  /*$host = "db.tecnico.ulisboa.pt";
  $user = "ist187077";
