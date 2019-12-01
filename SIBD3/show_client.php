@@ -3,16 +3,16 @@
  <body>
 <?php
 
- $host = "localhost";
+ /*$host = "localhost";
  $user = "root";
- $pass = "";
- $db = "SIBD";
- $dsn = "mysql:host=$host;dbname=$db";
+ $pass = "proj_part3";
+ $db = "proj_part2";
+ $dsn = "mysql:host=$host;dbname=$db";*/
 
- /*$host = "db.tecnico.ulisboa.pt";
+ $host = "db.tecnico.ulisboa.pt";
  $user = "ist187077";
  $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";*/
+ $dsn = "mysql:host=$host;dbname=$user";
 
  try{
 	 $conn = new PDO($dsn, $user, $pass);
@@ -90,7 +90,7 @@ if($c_rows > 0): ?>
  echo("<p>No client found. Click to create new</p>");?>
  
 <form action="create_client.php" method="post">
-	<p><input type="submit" value="Create"/></p>
+	<input type="submit" class="btn btn-info" value="Create"/>
 </form>
   <?php endif;?>
 

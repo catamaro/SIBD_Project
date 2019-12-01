@@ -3,16 +3,12 @@
 
  <body>
 <?php
+
  $host = "localhost";
  $user = "root";
- $pass = "";
- $db = "SIBD";
+ $pass = "proj_part3";
+ $db = "proj_part2";
  $dsn = "mysql:host=$host;dbname=$db";
-
- /*$host = "db.tecnico.ulisboa.pt";
- $user = "ist187077";
- $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";*/
 
  try{
 	 $conn = new PDO($dsn, $user, $pass);
@@ -36,14 +32,8 @@ $asql = "SELECT date_timestamp, VAT_doctor
         FROM appointment 
         WHERE VAT_client = '$client_VAT'
         GROUP BY date_timestamp";
-$consverifsql = "SELECT c.VAT_doctor
-                 FROM consultation AS c, appointment AS a 
-                 WHERE a.date_timestamp = '$date' AND a.VAT_doctor = '$doctor' 
-                 AND c.date_timestamp = a.date_timestamp AND c.VAT_doctor = a.VAT_doctor";
 $arows = $conn->query($asql);
 $a_count = $arows->rowCount();
-$consverification = $conn->query($consverifsql);
-$consrows = $consverification->rowCount();
 ?>
 
 <h2>Client Information: </h2>
@@ -96,14 +86,27 @@ if ($arows == FALSE)
   </thead>
   <tbody>
  
- <?php foreach ($arows as $row): ?>
+ <?php foreach ($arows as $row): 
+    $vat_doctor = $row['VAT_doctor'];
+    $date = $row['date_timestamp'];?>
 	<tr> 
-	<td><?php echo $row['VAT_doctor']; ?></td> 
-	<td><?php echo $row['date_timestamp']; ?></td> 
-    <td><a href="appointment_details.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">See more</a></td>
+	<td><?php echo $vat_doctor; ?></td> 
+	<td><?php echo $date; ?></td> 
+    <td><a href="appointment_details.php?date_timestamp=<?php echo $date?>&VAT_doctor=<?php echo $vat_doctor?>">See more</a></td>
     <td>
-    <?php if ($consrows == 0) ?>
-        <a href="create_consultation.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">Register consultation</a>
+    <?php
+    $consverifsql = "SELECT c.VAT_doctor
+                    FROM consultation AS c, appointment AS a 
+                    WHERE a.date_timestamp = '$date' AND a.VAT_doctor = '$vat_doctor' 
+                    AND c.date_timestamp = a.date_timestamp AND c.VAT_doctor = a.VAT_doctor";
+    $consverification = $conn->query($consverifsql);
+    $consrows = $consverification->rowCount(); 
+    if ($consrows == 0){ ?>
+    <a href="create_consultation.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">Register consultation</a>
+    <?php }
+    else if ($consrows > 0) {?>
+        <a href="create_consultation.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">Update consultation</a>
+    <?php } ?>
     </td>
 	</tr>
  <?php endforeach; ?>
@@ -114,8 +117,8 @@ if ($arows == FALSE)
 </div>
 <?php
 else :
-	echo("<div class=\"col-6\"><h2 >Previous consultations:</h2>
-			<p>No Appointment found </p>
+	echo("<div class=\"col-6\"><h2 >Previous appointments:</h2>
+			<p>No appointment found </p>
 			</div>
 			</div>");
 endif;
@@ -162,8 +165,13 @@ $consql = "SELECT c.date_timestamp, c.VAT_doctor
    </div>
 <?php
 else :
+<<<<<<< HEAD
 	echo("<div class=\"col-6\"><h2>Previous consultations:</h2>
 			<p>No Consultation found </p>
+=======
+	echo("<div class=\"col-6\"><h2 >Previous consultations:</h2>
+			<p>No consultation found </p>
+>>>>>>> d51476477f005183c79393eb4637dc1944dbea07
 			</div>
 			</div>");
 endif;?>
@@ -171,11 +179,19 @@ endif;?>
 </br></br>
 <h2>New Appointment: </h2>
 <form action="mark_appointment.php" method="post">
-	<input hidden type="text" name="client_VAT" value= "<?php echo $crow['client_VAT'];?>"/>
-	<input type="date" name="date">
-	<input type="time" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
+  <input hidden type="text" name="client_VAT" value= "<?php echo $crow['client_VAT'];?>"/>
+  <div class="col-4">
+  <div class="form-group">
+      <input type="date" class="form-control" name="date">
+  </div>
+  </div>
+  <div class="col-4">
+  <div class="form-group">
+      <input type="time" class="form-control" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
+  </div>
+  </div>
 	</br>
-	<p><input type="submit" value="Next"/></p>
+	<p><input type="submit" class="btn btn-info" value="Next"/></p>
 </form>
  </body>
 </html>

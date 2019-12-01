@@ -1,16 +1,12 @@
 <html>
 <body>
 <?php
+ 
  $host = "localhost";
  $user = "root";
- $pass = "";
- $db = "SIBD";
+ $pass = "proj_part3";
+ $db = "proj_part2";
  $dsn = "mysql:host=$host;dbname=$db";
-
- /*$host = "db.tecnico.ulisboa.pt";
- $user = "ist187077";
- $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";*/
 
  try{
 	 $conn = new PDO($dsn, $user, $pass);
@@ -36,7 +32,7 @@
             echo("<p>Error: {$info[2]}</p>");
             exit();
         }
-        echo("<h2>Appointment details:</h2>");
+        echo("<h2>Consultation details:</h2>");
         foreach ($condetails as $row){
             $S = $row['SOAP_S'];
             $O = $row['SOAP_O'];

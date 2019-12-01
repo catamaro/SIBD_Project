@@ -9,4 +9,3 @@ sudo cp insert_appointment.php /opt/lampp/htdocs
 sudo cp insert_client.php /opt/lampp/htdocs
 sudo cp insert_consultation.php /opt/lampp/htdocs
 sudo cp mark_appointment.php /opt/lampp/htdocs
-sudo cp selected_client.php /opt/lampp/htdocs
