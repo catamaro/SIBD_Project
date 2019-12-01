@@ -178,9 +178,17 @@ endif;?>
 </br></br>
 <h2>New Appointment: </h2>
 <form action="mark_appointment.php" method="post">
-	<input hidden type="text" name="client_VAT" value= "<?php echo $crow['client_VAT'];?>"/>
-	<input type="date" name="date">
-	<input type="time" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
+  <input hidden type="text" name="client_VAT" value= "<?php echo $crow['client_VAT'];?>"/>
+  <div class="col-4">
+  <div class="form-group">
+      <input type="date" class="form-control" name="date">
+  </div>
+  </div>
+  <div class="col-4">
+  <div class="form-group">
+      <input type="time" class="form-control" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
+  </div>
+  </div>
 	</br>
 	<p><input type="submit" class="btn btn-info" value="Next"/></p>
 </form>

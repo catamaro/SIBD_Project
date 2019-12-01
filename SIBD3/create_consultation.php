@@ -47,23 +47,24 @@
                 </div>
                 <div class="form-group">
                     <label for="s">S:</label>
-                    <input type="text" class="form-control" name="s">
+                    <input required type="text" class="form-control" name="s">
                 </div>
                 <div class="form-group">
                     <label for="o">O:</label>
-                    <input type="text" class="form-control" name="o">
+                    <input required type="text" class="form-control" name="o">
                 </div>
                 <div class="form-group">
                     <label for="a">A:</label>
-                    <input type="text" class="form-control" name="a">
+                    <input required type="text" class="form-control" name="a">
                 </div>
                 <div class="form-group">
                     <label for="p">P:</label>
-                    <input type="text" class="form-control" name="p">
+                    <input required type="text" class="form-control" name="p">
                 </div>
                 <div class="form-group">
                     <label for="vat_nurse">VAT_Nurse:</label>
                     <select class="form-control" name="vat_nurse">
+                        <option selected disabled>--Choose an option--</option>
                     <?php
                         foreach ($VAT_nurse as $row){ ?>
                             <option><?php echo $row['VAT_nurse'] ?> </option>
@@ -73,6 +74,7 @@
                 <div class="form-group">
                     <label for="diagnostic_id">Diagnostic Code ID:</label>
                     <select class="form-control" name="diagnostic_id">
+                        <option selected disabled>--Choose an option--</option>
                     <?php
                         foreach ($dcID as $row){ ?>
                             <option><?php echo $row['ID'] ?> </option>
@@ -82,6 +84,7 @@
                 <div class="form-group">
                     <label for="medication_name">Medication Name:</label>
                     <select class="form-control" name="medication_name">
+                        <option selected disabled>--Choose an option--</option>
                     <?php
                         foreach ($medName as $row){ ?>
                             <option><?php echo $row['medication_name'] ?> </option>
@@ -91,6 +94,7 @@
                 <div class="form-group">
                     <label for="medication_lab">Medication Lab:</label>
                     <select class="form-control" name="medication_lab">
+                        <option selected disabled>--Choose an option--</option>
                     <?php
                         foreach ($medLab as $row){ ?>
                             <option><?php echo $row['medication_lab'] ?> </option>
@@ -100,6 +104,7 @@
                 <div class="form-group">
                     <label for="presc_id">Prescription ID:</label>
                     <select class="form-control" name="presc_id">
+                        <option selected disabled>--Choose an option--</option>
                     <?php
                         foreach ($prescID as $row){ ?>
                             <option><?php echo $row['ID'] ?> </option>
