@@ -37,6 +37,7 @@
         $dosage = $_REQUEST['dosage'];
         $prescription_description = $_REQUEST['prescription_description'];
         $sql = "INSERT INTO consultation VALUES ('$vat_doctor', '$date', '$s', '$o', '$a', '$p')";
+      
         if ($conn->query($sql) == TRUE) {
             echo("New record for consultation created successfully");
         } else {

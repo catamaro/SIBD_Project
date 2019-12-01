@@ -41,9 +41,9 @@ $drows = $conn->query($dsql);
 $d_rows = $drows->rowCount();
 
 if($d_rows > 0): ?>
-  <h2>Let's mark an appointment </h2>
+  <h2>Let's mark the appointment </h2>
   </br>
-   <h3>Your VAT: <?php echo $client_VAT ?> </h3>
+   <h3>Client's VAT: <?php echo $client_VAT ?> </h3>
     </br>
  <h3>Doctors avaiable for <?php echo $combinedDT ?>: </h3>
 <form action="insert_appointment.php" method="post">
@@ -63,17 +63,17 @@ if($d_rows > 0): ?>
 	<tr> 
 	<td><?php echo $row['employee_VAT']; ?></a></td> 
 	<td><?php echo $row['employee_name']; ?></td>
-	<td><input type="checkbox" name="doc_vat[]" value="<?php echo $row['employee_VAT']; ?>"> </td>
+	<td><input required type='radio' name="doc_vat" value="<?php echo $row['employee_VAT']; ?>"> </td>
 	
 	
 	</tr>
  <?php endforeach;?>
   </tbody>
 </table>
-</div>
-<input hidden type="text" name="date_timestamp" value=<?php echo $combinedDT ?> />
-<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?> />
- <p>Appointment description: <input type="text" name="descp"/></p>
+
+<input hidden type="text" name="date_timestamp" value="<?php echo $combinedDT ?>" />
+<input hidden type="text" name="client_VAT" value="<?php echo $client_VAT ?>" />
+ <p>Appointment description: <input required type="text" name="descp"/></p>
  <p><input type="submit" value="Create appointment"></p>
  </form>
   <?php

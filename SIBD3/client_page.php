@@ -74,8 +74,9 @@ if ($arows == FALSE)
     exit();
 } ?>
 
-<?php if($a_count > 0): ?>
+
 <div class="row" style="margin:0">
+<?php if($a_count > 0): ?>
 <div class="col-6"><h2>Previous appointments:</h2>
 <div class="table table-striped" style="overflow-y: auto; max-height: 300px;">
 <table class="table">
