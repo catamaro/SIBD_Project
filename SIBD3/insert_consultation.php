@@ -3,8 +3,8 @@
     <?php
          $host = "localhost";
 		 $user = "root";
-		 $pass = "proj_part3";
-		 $db = "proj_part2";
+		 $pass = "";
+		 $db = "SIBD";
 		 $dsn = "mysql:host=$host;dbname=$db";
 
 		 /*$host = "db.tecnico.ulisboa.pt";

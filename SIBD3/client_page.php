@@ -5,8 +5,8 @@
 <?php
  $host = "localhost";
  $user = "root";
- $pass = "proj_part3";
- $db = "proj_part2";
+ $pass = "";
+ $db = "SIBD";
  $dsn = "mysql:host=$host;dbname=$db";
 
  /*$host = "db.tecnico.ulisboa.pt";
@@ -158,7 +158,7 @@ $consql = "SELECT c.date_timestamp, c.VAT_doctor
    </div>
 <?php
 else :
-	echo("<div class=\"col-6\"><h2 >Previous consultations:</h2>
+	echo("<div class=\"col-6\"><h2>Previous consultations:</h2>
 			<p>No Consultation found </p>
 			</div>
 			</div>");
