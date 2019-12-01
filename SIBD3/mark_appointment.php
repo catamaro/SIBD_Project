@@ -41,9 +41,9 @@ $drows = $conn->query($dsql);
 $d_rows = $drows->rowCount();
 
 if($d_rows > 0): ?>
-  <h2>Let's mark an appointment </h2>
+  <h2>Let's mark the appointment </h2>
   </br>
-   <h3>Your VAT: <?php echo $client_VAT ?> </h3>
+   <h3>Client's VAT: <?php echo $client_VAT ?> </h3>
     </br>
  <h3>Doctors avaiable for <?php echo $combinedDT ?>: </h3>
 <form action="insert_appointment.php" method="post">
