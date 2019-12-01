@@ -73,8 +73,11 @@ if($d_rows > 0): ?>
 
 <input hidden type="text" name="date_timestamp" value="<?php echo $combinedDT ?>" />
 <input hidden type="text" name="client_VAT" value="<?php echo $client_VAT ?>" />
- <p>Appointment description: <input required type="text" name="descp"/></p>
- <p><input type="submit" value="Create appointment"></p>
+<div class="form-group">
+	<label for="descp">Appointment description:</label>
+	<input required type="text" class="form-control" name="descp">
+</div>
+ <p><input type="submit" class="btn btn-info" value="Create appointment"></p>
  </form>
   <?php
 else: 
