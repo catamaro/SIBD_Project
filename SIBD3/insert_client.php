@@ -31,17 +31,27 @@ $client_gender = $_REQUEST['client_gender'];
 $client_age = $_REQUEST['client_age'];
 
 $sql = "insert into client values ('$client_VAT', '$client_name', '$client_birth_date', '$client_street', '$client_city', '$client_zip', '$client_gender', '$client_age');";
-
-if ($conn->query($sql) == TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
 ?>
+	<form action="client.php" method="post">
+<?php if ($conn->query($sql) == TRUE): ?>
 
- <form action="client.php" method="post">
- <p><input type="submit" value="Go to search"/></p>
- </form>
+	<h2>Client inserted:</h2>
+	<p>VAT:<?php echo $client_VAT ?></p>
+	<p>Name:<?php echo $client_name ?></p>
+	<p>Birth-date:<?php echo $client_birth_date ?></p>
+	<p>Street:<?php echo $client_street ?></p>
+	<p>City:<?php echo $client_city ?></p>
+	<p>Zip:<?php echo $client_zip ?></p>
+	<p>Gender:<?php echo $client_gender ?></p>
+	<p>Age:<?php echo $client_age ?></p>
+
+<?php else:
+    echo "Error: " . $sql . "<br>" ;
+endif;
+?>
+	 <p><input type="submit" value="Go to search"/></p>
+	</form>
+    </body>
 
  </body>
 </html>

@@ -62,7 +62,6 @@
             echo("<br>Dosage: $dosage</br>");
             echo("<br>Description: $prescription_description</br>");
         }
-        $conn->close();
         ?>
     </body>
 </html>

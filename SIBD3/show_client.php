@@ -31,8 +31,10 @@ $csql = "SELECT *
 		FROM client AS c
 		WHERE
 		(CASE
-			WHEN '$client_VAT' = '' THEN  c.client_name LIKE '%$client_name%' AND c.client_street LIKE '%$client_street%'
-			ELSE '$client_VAT' = c.client_VAT	AND c.client_name LIKE '%$client_name%' AND c.client_street LIKE '%$client_street%'
+			WHEN '$client_VAT' = '' THEN  c.client_name LIKE '%$client_name%' 
+			AND (c.client_street LIKE '%$client_street%' OR c.client_city LIKE '%$client_street%' OR c.client_zip LIKE '%$client_street%')
+			ELSE '$client_VAT' = c.client_VAT	AND c.client_name LIKE '%$client_name%' 
+			AND (c.client_street LIKE '%$client_street%' OR c.client_city LIKE '%$client_street%' OR c.client_zip LIKE '%$client_street%')
 		END)";
 
 

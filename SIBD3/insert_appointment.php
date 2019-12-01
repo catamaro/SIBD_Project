@@ -28,18 +28,22 @@ $date_timestamp = $_REQUEST['date_timestamp'];
 $appointment_description = $_REQUEST['descp'];
 
 $sql = "insert into appointment values ('$VAT_doctor', '$VAT_client', '$date_timestamp', '$appointment_description');";
-
-
-if ($conn->query($sql) == TRUE) {
-    echo "New record created successfully";
-} else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
-}
 ?>
+	<form action="client.php" method="post">
+<?php if ($conn->query($sql) == TRUE): ?>
 
- <form action="client.php" method="post">
- <p><input type="submit" value="Go to search"/></p>
- </form>
+	<h2>Appointment inserted:</h2>
+	<p>Doctor:<?php echo $VAT_doctor ?></p>
+	<p>Client:<?php echo $VAT_client ?></p>
+	<p>Date:<?php echo $date_timestamp ?></p>
+	<p>Description:<?php echo $appointment_description ?></p>
+
+<?php else :
+    echo "Error: " . $sql . "<br>" ;
+endif;
+?>
+	 <p><input type="submit" value="Go to search"/></p>
+	</form>
 
  </body>
 </html>
