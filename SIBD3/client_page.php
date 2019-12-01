@@ -109,7 +109,7 @@ if ($arows == FALSE)
     <a href="create_consultation.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">Register consultation</a>
     <?php }
     else if ($consrows > 0) {?>
-        <a href="create_consultation.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">Update consultation</a>
+        <a href="update_consultation.php?date_timestamp=<?php echo $row['date_timestamp']?>&VAT_doctor=<?php echo $row['VAT_doctor']?>">Update consultation</a>
     <?php } ?>
     </td>
 	</tr>
