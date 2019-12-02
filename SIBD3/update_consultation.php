@@ -27,12 +27,10 @@
         $dcID_sql = "SELECT ID FROM diagnostic_code";
         $medName_sql = "SELECT medication_name FROM medication";
         $medLab_sql = "SELECT medication_lab FROM medication";
-        $prescID_sql = "SELECT ID FROM prescription";
         $VAT_nurse = $conn->query($VATnurse_sql);
         $dcID = $conn->query($dcID_sql);
         $medName = $conn->query($medName_sql);
         $medLab = $conn->query($medLab_sql);
-        $prescID = $conn->query($prescID_sql);
         ?>
         <div class="container">
             <h2>New Consultation:</h2>
@@ -72,7 +70,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="diagnostic_id">Diagnostic Code ID:</label>
+                    <label for="diagnostic_id">ID:</label>
                     <select class="form-control" name="diagnostic_id">
                         <option selected disabled>--Choose an option--</option>
                     <?php
@@ -98,16 +96,6 @@
                     <?php
                         foreach ($medLab as $row){ ?>
                             <option><?php echo $row['medication_lab'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="presc_id">Prescription ID:</label>
-                    <select class="form-control" name="presc_id">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($prescID as $row){ ?>
-                            <option><?php echo $row['ID'] ?> </option>
                         <?php } ?>
                     </select>
                 </div>

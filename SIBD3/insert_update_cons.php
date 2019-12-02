@@ -54,6 +54,13 @@
             } else {
                 echo("Error: " . $diagnostic_sql . "<br>" . $conn->error);
             }
+            $prescID_sql = "UPDATE prescription SET ID = '$diagnostic_id'
+                            WHERE VAT_doctor = '$vat_doctor' AND date_timestamp = '$date'";
+            if ($conn->query($prescID_sql) == TRUE) {
+                echo("ID updated in prescription.\n");
+            } else {
+                echo("Error: " . $prescID_sql . "<br>" . $conn->error);
+            }
         }
         if (!empty($medication_name)){
             $medName_sql = "UPDATE prescription SET medication_name = '$medication_name'
@@ -71,15 +78,6 @@
                 echo("Medication lab updated in prescription.\n");
             } else {
                 echo("Error: " . $medLab_sql . "<br>" . $conn->error);
-            }
-        }
-        if (!empty($presc_id)){
-            $prescID_sql = "UPDATE prescription SET ID = '$presc_id'
-                            WHERE VAT_doctor = '$vat_doctor' AND date_timestamp = '$date'";
-            if ($conn->query($prescID_sql) == TRUE) {
-                echo("ID updated in prescription.\n");
-            } else {
-                echo("Error: " . $prescID_sql . "<br>" . $conn->error);
             }
         }
         if (!empty($dosage)){

@@ -72,6 +72,6 @@
         </form>
         <form action="client.php" method="post">
             <p><input type="submit" class="btn btn-info" value="Go to search"/></p>
-        </form>
+        </form>      
     </body>
 </html>
