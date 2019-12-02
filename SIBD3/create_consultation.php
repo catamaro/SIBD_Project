@@ -25,14 +25,8 @@
                         WHERE a.date_timestamp = ca.date_timestamp AND a.VAT_doctor = ca.VAT_doctor 
                         AND '$date' BETWEEN  a.date_timestamp AND DATE_ADD(a.date_timestamp, INTERVAL 1 HOUR))";
         $dcID_sql = "SELECT ID FROM diagnostic_code";
-        $medName_sql = "SELECT medication_name FROM medication";
-        $medLab_sql = "SELECT medication_lab FROM medication";
-        $prescID_sql = "SELECT ID FROM prescription";
         $VAT_nurse = $conn->query($VATnurse_sql);
         $dcID = $conn->query($dcID_sql);
-        $medName = $conn->query($medName_sql);
-        $medLab = $conn->query($medLab_sql);
-        $prescID = $conn->query($prescID_sql);
         ?>
         <div class="container">
             <h2>New Consultation:</h2>
@@ -80,44 +74,6 @@
                             <option><?php echo $row['ID'] ?> </option>
                         <?php } ?>
                     </select>
-                </div>
-                <div class="form-group">
-                    <label for="medication_name">Medication Name:</label>
-                    <select class="form-control" name="medication_name">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($medName as $row){ ?>
-                            <option><?php echo $row['medication_name'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="medication_lab">Medication Lab:</label>
-                    <select class="form-control" name="medication_lab">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($medLab as $row){ ?>
-                            <option><?php echo $row['medication_lab'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="presc_id">Prescription ID:</label>
-                    <select class="form-control" name="presc_id">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($prescID as $row){ ?>
-                            <option><?php echo $row['ID'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="dosage">Dosage:</label>
-                    <input type="text" class="form-control" name="dosage">
-                </div>
-                <div class="form-group">
-                    <label for="prescription_description">Prescription Description:</label>
-                    <input type="text" class="form-control" name="prescription_description">
                 </div>
                 <input type="submit" class="btn btn-info" value="Insert"/>
             </form>
