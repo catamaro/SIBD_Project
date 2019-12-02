@@ -1,7 +1,7 @@
-<html>
+<html>     
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <body>  
-        <?php
+    <?php 
         $host = "db.tecnico.ulisboa.pt";
         $user = "ist187077";
         $pass = "qrtr9733";
@@ -17,67 +17,24 @@
             exit();
         }
 
-        $doctor = $_REQUEST['VAT_doctor'];
-        $date = $_REQUEST['date_timestamp']; 
-        $VATnurse_sql = "SELECT DISTINCT n.VAT_nurse FROM nurse AS n, consultation_assistant as ca 
-                        WHERE n.VAT_nurse = ca.VAT_nurse AND ca.VAT_nurse NOT IN (SELECT ca.VAT_nurse 
-                        FROM consultation_assistant AS ca, appointment AS a 
-                        WHERE a.date_timestamp = ca.date_timestamp AND a.VAT_doctor = ca.VAT_doctor 
-                        AND '$date' BETWEEN  a.date_timestamp AND DATE_ADD(a.date_timestamp, INTERVAL 1 HOUR))";
-        $dcID_sql = "SELECT ID FROM diagnostic_code";
+        $vat_doctor = $_REQUEST['vat_doctor'];
+        $date = $_REQUEST['date'];
+        $id = $_REQUEST['id'];
         $medName_sql = "SELECT medication_name FROM medication";
         $medLab_sql = "SELECT medication_lab FROM medication";
-        $VAT_nurse = $conn->query($VATnurse_sql);
-        $dcID = $conn->query($dcID_sql);
         $medName = $conn->query($medName_sql);
         $medLab = $conn->query($medLab_sql);
-        ?>
+    ?>    
         <div class="container">
-            <h2>New Consultation:</h2>
-            <form action="insert_update_cons.php" method="post">
+            <h2>Prescription:</h2>
+            <form action="insert_prescription.php" method="post">  
                 <div class="form-group">
                     <label for="vat_doctor">VAT_Doctor:</label>
-                    <input readonly type="text" class="form-control" name="vat_doctor" value="<?php echo($doctor) ?>" >
+                    <input readonly type="text" class="form-control" name="vat_doctor" value="<?php echo($vat_doctor) ?>" >
                 </div>
                 <div class="form-group">
                     <label for="date">Date:</label>
                     <input readonly type="text" class="form-control" name="date" value="<?php echo($date) ?>" >
-                </div>
-                <div class="form-group">
-                    <label for="s">S:</label>
-                    <input type="text" class="form-control" name="s">
-                </div>
-                <div class="form-group">
-                    <label for="o">O:</label>
-                    <input type="text" class="form-control" name="o">
-                </div>
-                <div class="form-group">
-                    <label for="a">A:</label>
-                    <input type="text" class="form-control" name="a">
-                </div>
-                <div class="form-group">
-                    <label for="p">P:</label>
-                    <input type="text" class="form-control" name="p">
-                </div>
-                <div class="form-group">
-                    <label for="vat_nurse">VAT_Nurse:</label>
-                    <select class="form-control" name="vat_nurse">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($VAT_nurse as $row){ ?>
-                            <option><?php echo $row['VAT_nurse'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="diagnostic_id">ID:</label>
-                    <select class="form-control" name="diagnostic_id">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($dcID as $row){ ?>
-                            <option><?php echo $row['ID'] ?> </option>
-                        <?php } ?>
-                    </select>
                 </div>
                 <div class="form-group">
                     <label for="medication_name">Medication Name:</label>
@@ -98,6 +55,10 @@
                             <option><?php echo $row['medication_lab'] ?> </option>
                         <?php } ?>
                     </select>
+                </div>
+                <div class="form-group">
+                    <label for="presc_id">Prescription ID:</label>
+                    <input readonly type="text" class="form-control" name="presc_id" value="<?php echo($id) ?>">
                 </div>
                 <div class="form-group">
                     <label for="dosage">Dosage:</label>
