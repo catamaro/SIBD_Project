@@ -25,7 +25,8 @@
 
         $vat_doctor = $_REQUEST['vat_doctor'];
         $date = $_REQUEST['date'];
-        $medication_name = $_REQUEST['medication_name'];
+        $medication = $_REQUEST['medication'];
+        list($medication_name, $medication_lab) = explode('/', '$medication');
         $medication_lab = $_REQUEST['medication_lab'];
         $presc_id = $_REQUEST['presc_id'];
         $dosage = $_REQUEST['dosage'];
