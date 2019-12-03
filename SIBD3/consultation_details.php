@@ -20,20 +20,29 @@
         $date = $_REQUEST['date_timestamp'];
         $doctor = $_REQUEST['VAT_doctor'];
 
-        $condetsql = $conn->prepare("SELECT c.SOAP_S, c.SOAP_O, c.SOAP_A, c.SOAP_P, dc.ID, dc.diagnostic_description,
-                        p.medication_name, p.medication_lab, p.dosage, p.prescription_description
-                      FROM consultation AS c, prescription AS p, consultation_diagnostic AS cd, diagnostic_code AS dc
-                      WHERE c.date_timestamp = :date_timestamp AND c.VAT_doctor = :vat_doctor AND c.VAT_doctor = cd.VAT_doctor
-                        AND c.date_timestamp = cd.date_timestamp AND cd.ID = dc.ID AND c.VAT_doctor = p.VAT_doctor
-                        AND c.date_timestamp = p.date_timestamp AND cd.ID = p.ID");
+        $condetsql = $conn->prepare("SELECT SOAP_S, SOAP_O, SOAP_A, SOAP_P FROM consultation
+                      WHERE date_timestamp = :date_timestamp AND VAT_doctor = :vat_doctor");
+        $dcdetsql = $conn->prepare("SELECT dc.ID, dc.diagnostic_description 
+                      FROM diagnostic_code AS dc, consultation_diagnostic AS cd
+                      WHERE cd.date_timestamp = :date_timestamp AND cd.VAT_doctor = :vat_doctor AND cd.ID = dc.ID");
+        $prescdetsql = $conn->prepare("SELECT p.medication_name, p.medication_lab, p.dosage, p.prescription_description
+                      FROM prescription AS p, consultation_diagnostic AS cd
+                      WHERE p.date_timestamp = :date_timestamp AND p.VAT_doctor = :vat_doctor AND p.VAT_doctor = cd.VAT_doctor
+                      AND p.date_timestamp = cd.date_timestamp AND cd.VAT_doctor = p.VAT_doctor AND cd.ID = p.ID");
+  
+      $condetsql->bindParam(':date_timestamp',	 $date);
+      $condetsql->bindParam(':vat_doctor',	 $doctor);
+      $dcdetsql->bindParam(':date_timestamp',	 $date);
+      $dcdetsql->bindParam(':vat_doctor',	 $doctor);
+      $prescdetsql->bindParam(':date_timestamp',	 $date);
+      $prescdetsql->bindParam(':vat_doctor',	 $doctor);
+		  $condetsql->execute();
+      $dcdetsql->execute();
+      $prescdetsql->execute();
 
-						
-		$condetsql->bindParam(':date_timestamp',	 $date);
-		$condetsql->bindParam(':vat_doctor',	 $doctor);
-		$condetsql->execute();
-
-		$condetails =  $condetsql->fetchAll();
-       
+      $condetails =  $condetsql->fetchAll();
+      $dcdetails =  $condetsql->fetchAll();
+      $prescdetails =  $condetsql->fetchAll();
 
         echo("<h2>Consultation details:</h2>");
         foreach ($condetails as $row){
@@ -41,12 +50,6 @@
             $O = $row['SOAP_O'];
             $A = $row['SOAP_A'];
             $P = $row['SOAP_P'];
-            $id = $row['ID'];
-            $diagnostic_description = $row['diagnostic_description'];
-            $medication_name = $row['medication_name'];
-            $medication_lab = $row['medication_lab'];
-            $dosage = $row['dosage'];
-            $prescription_description = $row['prescription_description'];
             if (!empty($S)){
                 echo("<h4>SOAP</h4>");
                 echo("<br>S: $S</br>");
@@ -54,11 +57,23 @@
                 echo("<br>A: $A</br>");
                 echo("<br>P: $P</br>");
             }
+        }
+      
+        foreach ($dcdetails as $row){
+            $id = $row['ID'];
+            $diagnostic_description = $row['diagnostic_description'];
             if (!empty($id)){
                 echo("<h4>Diagnostic</h4>");
                 echo("<br>ID: $id</br>");
                 echo("<br>Description: $diagnostic_description</br>");
             }
+        }
+
+        foreach ($prescdetails as $row){
+            $medication_name = $row['medication_name'];
+            $medication_lab = $row['medication_lab'];
+            $dosage = $row['dosage'];
+            $prescription_description = $row['prescription_description'];
             if (!empty($dosage)){
                 echo("<h4>Prescription</h4>");
                 echo("<br>Medication name: $medication_name</br>");
