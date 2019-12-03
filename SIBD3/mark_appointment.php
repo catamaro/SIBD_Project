@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <html>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
@@ -81,7 +80,7 @@ else:
  echo("<p>No doctor avaiable. Click to select other time</p>");?>
  
 <form action="client_page.php" method="post">
-	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>
+	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>>
 	<p><input type="submit" value="Change time"/></p>
 </form>
   <?php endif;?>
