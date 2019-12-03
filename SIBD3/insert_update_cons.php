@@ -31,8 +31,10 @@
         $p = $_REQUEST['p'];
         $vat_nurse = $_REQUEST['vat_nurse'];
         $diagnostic_id = $_REQUEST['diagnostic_id'];
-        $medication_name = $_REQUEST['medication_name'];
-        $medication_lab = $_REQUEST['medication_lab'];
+        $medication = $_REQUEST['medication'];
+        $med_array = explode('/', $medication);
+        $medication_name = $med_array[0];
+        $medication_lab = $med_array[1];
         $presc_id = $_REQUEST['presc_id'];
         $dosage = $_REQUEST['dosage'];
         $prescription_description = $_REQUEST['prescription_description'];

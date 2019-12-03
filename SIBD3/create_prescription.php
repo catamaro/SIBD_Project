@@ -20,10 +20,8 @@
         $vat_doctor = $_REQUEST['vat_doctor'];
         $date = $_REQUEST['date'];
         $id = $_REQUEST['id'];
-        $medName_sql = "SELECT medication_name FROM medication";
-        $medLab_sql = "SELECT medication_lab FROM medication";
-        $medName = $conn->query($medName_sql);
-        $medLab = $conn->query($medLab_sql);
+        $med_sql = "SELECT medication_name, medication_lab FROM medication";
+        $med = $conn->query($med_sql);
     ?>    
         <div class="container">
             <h2>Prescription:</h2>
@@ -37,22 +35,12 @@
                     <input readonly type="text" class="form-control" name="date" value="<?php echo($date) ?>" >
                 </div>
                 <div class="form-group">
-                    <label for="medication_name">Medication Name:</label>
+                    <label for="medication">Medication Name/Medication Lab:</label>
                     <select class="form-control" name="medication_name">
                         <option selected disabled>--Choose an option--</option>
                     <?php
-                        foreach ($medName as $row){ ?>
-                            <option><?php echo $row['medication_name'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="medication_lab">Medication Lab:</label>
-                    <select class="form-control" name="medication_lab">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($medLab as $row){ ?>
-                            <option><?php echo $row['medication_lab'] ?> </option>
+                        foreach ($med as $row){ ?>
+                            <option><?php echo $row['medication_name'] ?>/<?php echo $row['medication_lab'] ?> </option>
                         <?php } ?>
                     </select>
                 </div>

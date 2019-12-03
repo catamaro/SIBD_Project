@@ -26,13 +26,20 @@
                         AND '$date' = a.date_timestamp";
         $soap_sql = "SELECT SOAP_S, SOAP_O, SOAP_A, SOAP_P FROM consultation WHERE VAT_doctor = '$doctor' AND date_timestamp = '$date'";
         $dcID_sql = "SELECT ID FROM diagnostic_code";
-        $medName_sql = "SELECT medication_name FROM medication";
-        $medLab_sql = "SELECT medication_lab FROM medication";
+        $med_sql = "SELECT medication_name, medication_lab FROM medication";
+        $verif_nurse_sql = "SELECT VAT_nurse FROM consultation_assistant WHERE VAT_doctor = '$doctor' AND date_timestamp = '$date'";
+        $verif_diagnostic_sql = "SELECT ID FROM consultation_diagnostic WHERE VAT_doctor = '$doctor' AND date_timestamp = '$date'";
+        $verif_prescription_sql = "SELECT ID FROM prescription WHERE VAT_doctor = '$doctor' AND date_timestamp = '$date'";
+        $med = $conn->query($med_sql);
         $VAT_nurse = $conn->query($VATnurse_sql);
         $soap = $conn->query($soap_sql);
         $dcID = $conn->query($dcID_sql);
-        $medName = $conn->query($medName_sql);
-        $medLab = $conn->query($medLab_sql);
+        $verif_nurse = $conn->query($verif_nurse_sql);
+        $verif_nurse_rows = $verif_nurse->rowCount();
+        $verif_diagnostic = $conn->query($verif_diagnostic_sql);
+        $verif_diagnostic_rows = $verif_diagnostic->rowCount();
+        $verif_prescription = $conn->query($verif_prescription_sql);
+        $verif_prescription_rows = $verif_prescription->rowCount();
         ?>
         <div class="container">
             <h2>Update Consultation:</h2>
@@ -63,55 +70,53 @@
                         <label for="p">P:</label>
                         <input type="text" class="form-control" name="p" value="<?php echo($row['SOAP_P']) ?>">
                     </div>
+                <?php } 
+                if($verif_nurse_rows > 0) {?>
+                    <div class="form-group">
+                        <label for="vat_nurse">VAT_Nurse:</label>
+                        <select class="form-control" name="vat_nurse">
+                            <option selected disabled>--Choose an option--</option>
+                        <?php
+                            foreach ($VAT_nurse as $row){ ?>
+                                <option><?php echo $row['VAT_nurse'] ?> </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                <?php } 
+                if($verif_diagnostic_rows > 0) {?>
+                    <div class="form-group">
+                        <label for="diagnostic_id">ID:</label>
+                        <select class="form-control" name="diagnostic_id">
+                            <option selected disabled>--Choose an option--</option>
+                        <?php
+                            foreach ($dcID as $row){ ?>
+                                <option><?php echo $row['ID'] ?> </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                <?php } 
+                if($verif_prescription_rows > 0) {?>
+                    <div class="form-group">
+                        <label for="medication">Medication Name/Medication Lab:</label>
+                        <select class="form-control" name="medication">
+                            <option selected disabled>--Choose an option--</option>
+                        <?php
+                            foreach ($med as $row){
+                            $medName = $row['medication_name'];
+                            $medLab = $row['medication_lab'];
+                                echo("<option> $medName/$medLab</option>"); 
+                            } ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="dosage">Dosage:</label>
+                        <input type="text" class="form-control" name="dosage">
+                    </div>
+                    <div class="form-group">
+                        <label for="prescription_description">Prescription Description:</label>
+                        <input type="text" class="form-control" name="prescription_description">
+                    </div>
                 <?php } ?>
-                <div class="form-group">
-                    <label for="vat_nurse">VAT_Nurse:</label>
-                    <select class="form-control" name="vat_nurse">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($VAT_nurse as $row){ ?>
-                            <option><?php echo $row['VAT_nurse'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="diagnostic_id">ID:</label>
-                    <select class="form-control" name="diagnostic_id">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($dcID as $row){ ?>
-                            <option><?php echo $row['ID'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="medication_name">Medication Name:</label>
-                    <select class="form-control" name="medication_name">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($medName as $row){ ?>
-                            <option><?php echo $row['medication_name'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="medication_lab">Medication Lab:</label>
-                    <select class="form-control" name="medication_lab">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($medLab as $row){ ?>
-                            <option><?php echo $row['medication_lab'] ?> </option>
-                        <?php } ?>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="dosage">Dosage:</label>
-                    <input type="text" class="form-control" name="dosage">
-                </div>
-                <div class="form-group">
-                    <label for="prescription_description">Prescription Description:</label>
-                    <input type="text" class="form-control" name="prescription_description">
-                </div>
                 <input type="submit" class="btn btn-info" value="Insert"/>
             </form>
         </div>
