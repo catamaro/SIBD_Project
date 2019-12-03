@@ -1,4 +1,6 @@
 <html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
  <body>
 <?php
  $host = "localhost";
@@ -30,10 +32,26 @@ $client_zip = $_REQUEST['client_zip'];
 $client_gender = $_REQUEST['client_gender'];
 $client_age = $_REQUEST['client_age'];
 
-$sql = "insert into client values ('$client_VAT', '$client_name', '$client_birth_date', '$client_street', '$client_city', '$client_zip', '$client_gender', '$client_age');";
+if($client_age == ''):
+	$client_age = null;
+endif;
+
+$sql = $conn->prepare("insert into client values (:client_VAT, :client_name, :client_birth_date, :client_street, :client_city, :client_zip, :client_gender, :client_age);");
+
+
+$sql->bindParam(':client_VAT',	 $client_VAT);
+$sql->bindParam(':client_name',  $client_name);
+$sql->bindParam(':client_birth_date',  $client_birth_date);
+$sql->bindParam(':client_street',  $client_street);
+$sql->bindParam(':client_city',  $client_city);
+$sql->bindParam(':client_zip',  $client_zip);
+$sql->bindParam(':client_gender',$client_gender);
+$sql->bindParam(':client_age',$client_age);
+
+
 ?>
 	<form action="client.php" method="post">
-<?php if ($conn->query($sql) == TRUE): ?>
+<?php if ($sql->execute()): ?>
 
 	<h2>Client inserted:</h2>
 	<p>VAT:<?php echo $client_VAT ?></p>
@@ -49,7 +67,7 @@ $sql = "insert into client values ('$client_VAT', '$client_name', '$client_birth
     echo "Error: " . $sql . "<br>" ;
 endif;
 ?>
-	 <p><input type="submit" value="Go to search"/></p>
+	 <p><input type="submit" class="btn btn-info" value="Go to search"/></p>
 	</form>
     </body>
 

@@ -25,16 +25,18 @@
 
     $date = $_REQUEST['date_timestamp'];
     $doctor = $_REQUEST['VAT_doctor'];
-    $appdetsql = "SELECT VAT_client, appointment_description
+
+    $appdetsql = $conn->prepare("SELECT VAT_client, appointment_description
                     FROM appointment 
-                    WHERE date_timestamp = '$date' AND VAT_doctor = '$doctor'";
-    $appdetails = $conn->query($appdetsql);
-    if ($appdetails == FALSE)
-    {
-        $info = $conn->errorInfo();
-        echo("<p>Error: {$info[2]}</p>");
-        exit();
-    }
+                    WHERE date_timestamp = :date_timestamp AND VAT_doctor = :VAT_doctor");
+	
+	$appdetsql->bindParam(':date_timestamp',	 $date);
+	$appdetsql->bindParam(':VAT_doctor',  $doctor);
+
+	$appdetsql->execute();
+
+	$appdetails =  $appdetsql->fetchAll();
+   
     echo("<h2>Appointment details:</h2>");
     foreach ($appdetails as $row){
         $client = $row['VAT_client'];

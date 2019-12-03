@@ -1,4 +1,4 @@
-USE proj_part2;
+USE SIBD;
 /* DROP ALL TABLES IF EXIST*/
 
 DROP TABLE IF EXISTS procedure_charting;
