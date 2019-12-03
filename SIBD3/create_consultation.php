@@ -24,7 +24,7 @@
                         WHERE n.VAT_nurse = ca.VAT_nurse AND ca.VAT_nurse NOT IN (SELECT ca.VAT_nurse 
                         FROM consultation_assistant AS ca, appointment AS a 
                         WHERE a.date_timestamp = ca.date_timestamp AND a.VAT_doctor = ca.VAT_doctor 
-                        AND '$date' BETWEEN  a.date_timestamp AND DATE_ADD(a.date_timestamp, INTERVAL 1 HOUR))";
+                        AND '$date' = a.date_timestamp";
         $dcID_sql = "SELECT ID FROM diagnostic_code";
         $VAT_nurse = $conn->query($VATnurse_sql);
         $dcID = $conn->query($dcID_sql);
