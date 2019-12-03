@@ -182,7 +182,7 @@ endif;?>
   </div>
   <div class="col-4">
   <div class="form-group">
-      <input type="time" step='3600' class="form-control" min="09:00" max="17:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
+      <input type="time" step='3600' class="form-control" min="09:00" max="16:00" name ="time" required> <small>Office hours are 9am to 5pm</small>
   </div>
   </div>
 	</br>
