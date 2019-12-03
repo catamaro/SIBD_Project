@@ -19,19 +19,22 @@
  }
         $date = $_REQUEST['date_timestamp'];
         $doctor = $_REQUEST['VAT_doctor'];
-        $condetsql = "SELECT c.SOAP_S, c.SOAP_O, c.SOAP_A, c.SOAP_P, dc.ID, dc.diagnostic_description,
+
+        $condetsql = $conn->prepare("SELECT c.SOAP_S, c.SOAP_O, c.SOAP_A, c.SOAP_P, dc.ID, dc.diagnostic_description,
                         p.medication_name, p.medication_lab, p.dosage, p.prescription_description
                       FROM consultation AS c, prescription AS p, consultation_diagnostic AS cd, diagnostic_code AS dc
-                      WHERE c.date_timestamp = '$date' AND c.VAT_doctor = '$doctor' AND c.VAT_doctor = cd.VAT_doctor
+                      WHERE c.date_timestamp = :date_timestamp AND c.VAT_doctor = :vat_doctor AND c.VAT_doctor = cd.VAT_doctor
                         AND c.date_timestamp = cd.date_timestamp AND cd.ID = dc.ID AND c.VAT_doctor = p.VAT_doctor
-                        AND c.date_timestamp = p.date_timestamp AND cd.ID = p.ID";
-        $condetails = $conn->query($condetsql);
-        if ($condetails == FALSE)
-        {
-            $info = $conn->errorInfo();
-            echo("<p>Error: {$info[2]}</p>");
-            exit();
-        }
+                        AND c.date_timestamp = p.date_timestamp AND cd.ID = p.ID");
+
+						
+		$condetsql->bindParam(':date_timestamp',	 $date);
+		$condetsql->bindParam(':vat_doctor',	 $doctor);
+		$condetsql->execute();
+
+		$condetails =  $condetsql->fetchAll();
+       
+
         echo("<h2>Consultation details:</h2>");
         foreach ($condetails as $row){
             $S = $row['SOAP_S'];

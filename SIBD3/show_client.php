@@ -24,33 +24,34 @@ catch(PDOException $exception){
 exit();
 }
 
-$client_VAT = $_REQUEST['client_VAT'];
-$client_name = $_REQUEST['client_name'];
-$client_street = $_REQUEST['client_street'];
-$csql = "SELECT *
+$csql = $conn->prepare("SELECT *
 		FROM client AS c
 		WHERE
 		(CASE
-			WHEN '$client_VAT' = '' THEN  c.client_name LIKE '%$client_name%' 
-			AND (c.client_street LIKE '%$client_street%' OR c.client_city LIKE '%$client_street%' OR c.client_zip LIKE '%$client_street%')
-			ELSE '$client_VAT' = c.client_VAT	AND c.client_name LIKE '%$client_name%' 
-			AND (c.client_street LIKE '%$client_street%' OR c.client_city LIKE '%$client_street%' OR c.client_zip LIKE '%$client_street%')
-		END)";
+			WHEN :client_VAT = '' THEN  c.client_name LIKE :client_name 
+			AND (c.client_street LIKE :client_street OR c.client_city LIKE :client_street OR c.client_zip LIKE :client_street)
+			ELSE :client_VAT = c.client_VAT	AND c.client_name LIKE :client_name 
+			AND (c.client_street LIKE :client_street OR c.client_city LIKE :client_street OR c.client_zip LIKE :client_street)
+		END)");
 
+$client_VAT =	 $_REQUEST['client_VAT'];
+$client_name =	 "%".$_REQUEST['client_name']."%";
+$client_street = "%".$_REQUEST['client_street']."%";
+
+$csql->bindParam(':client_VAT',	 $client_VAT);
+$csql->bindParam(':client_name',  $client_name);
+$csql->bindParam(':client_street',$client_street);
+
+$csql->execute();
+$crows =  $csql->fetchAll();
 
 echo("<h2>Clinic Clients: </h2>");
-$crows = $conn->query($csql);
-$c_rows = $crows->rowCount();
-if ($crows == FALSE)
-{
-	$info = $conn->errorInfo();
-	echo("<p>Error: {$info[2]}</p>");
-	exit();
-}
+$c_rows = $csql->rowCount();
+
 if($c_rows > 0): ?>
 
 <form action="selected_client.php" method="post">
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
     <th scope="col">VAT</th>
@@ -59,7 +60,6 @@ if($c_rows > 0): ?>
 	<th scope="col">Address(Street, City, Zip)</th>
 	<th scope="col">Gender</th>
 	<th scope="col">Age</th>
-
    </tr>
   </thead>
   <tbody>
@@ -83,7 +83,7 @@ if($c_rows > 0): ?>
  echo("<h2>New Client: </h2>");?>
  
 <form action="create_client.php" method="post">
-	<p><input type="submit" value="Create"/></p>
+	<p><input type="submit" class="btn btn-info" value="Create"/></p>
 </form>
 <?php
  else: 

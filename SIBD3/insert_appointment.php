@@ -1,4 +1,6 @@
 <html>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
  <body>
 <?php
 
@@ -28,10 +30,17 @@ $VAT_client = $_REQUEST['client_VAT'];
 $date_timestamp = $_REQUEST['date_timestamp'];
 $appointment_description = $_REQUEST['descp'];
 
-$sql = "insert into appointment values ('$VAT_doctor', '$VAT_client', '$date_timestamp', '$appointment_description');";
+$sql = $conn->prepare("insert into appointment values (:VAT_doctor, :VAT_client, :date_timestamp, :appointment_description);");
+
+
+$sql->bindParam(':VAT_doctor',	 $VAT_doctor);
+$sql->bindParam(':VAT_client',  $VAT_client);
+$sql->bindParam(':date_timestamp',$date_timestamp);
+$sql->bindParam(':appointment_description',$appointment_description);
+
 ?>
 	<form action="client.php" method="post">
-<?php if ($conn->query($sql) == TRUE): ?>
+<?php if ($sql->execute()): ?>
 
 	<h2>Appointment inserted:</h2>
 	<p>Doctor:<?php echo $VAT_doctor ?></p>
@@ -43,7 +52,7 @@ $sql = "insert into appointment values ('$VAT_doctor', '$VAT_client', '$date_tim
     echo "Error: " . $sql . "<br>" ;
 endif;
 ?>
-	 <p><input type="submit" value="Go to search"/></p>
+	 <p><input type="submit" class="btn btn-info" value="Go to search"/></p>
 	</form>
 
  </body>
