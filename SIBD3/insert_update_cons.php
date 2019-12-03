@@ -36,7 +36,35 @@
         $presc_id = $_REQUEST['presc_id'];
         $dosage = $_REQUEST['dosage'];
         $prescription_description = $_REQUEST['prescription_description'];
-      
+        
+        $soapS_sql = "UPDATE consultation SET SOAP_S = '$s'
+                      WHERE VAT_doctor = '$vat_doctor' AND date_timestamp = '$date'";
+        if ($conn->query($soapS_sql) == TRUE) {
+            echo("S updated in consultation.\n");
+        } else {
+            echo("Error: " . $soapS_sql . "<br>" . $conn->error);
+        }
+        $soapO_sql = "UPDATE consultation SET SOAP_O = '$o'
+                      WHERE VAT_doctor = '$vat_doctor' AND date_timestamp = '$date'";
+        if ($conn->query($soapO_sql) == TRUE) {
+            echo("O updated in consultation.\n");
+        } else {
+            echo("Error: " . $soapO_sql . "<br>" . $conn->error);
+        }
+        $soapA_sql = "UPDATE consultation SET SOAP_A = '$a'
+                      WHERE VAT_doctor = '$vat_doctor' AND date_timestamp = '$date'";
+        if ($conn->query($soapA_sql) == TRUE) {
+            echo("A updated in consultation.\n");
+        } else {
+            echo("Error: " . $soapA_sql . "<br>" . $conn->error);
+        }
+        $soapP_sql = "UPDATE consultation SET SOAP_P = '$p'
+                      WHERE VAT_doctor = '$vat_doctor' AND date_timestamp = '$date'";
+        if ($conn->query($soapP_sql) == TRUE) {
+            echo("P updated in consultation.\n");
+        } else {
+            echo("Error: " . $soapP_sql . "<br>" . $conn->error);
+        }
         if (!empty($vat_nurse)){
             $assist_sql = "UPDATE consultation_assistant SET VAT_nurse = '$vat_nurse' 
                             WHERE VAT_doctor = '$vat_doctor' AND date_timestamp = '$date'";
