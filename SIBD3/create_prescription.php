@@ -2,16 +2,16 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <body>  
     <?php 
-        /*$host = "db.tecnico.ulisboa.pt";
+        $host = "db.tecnico.ulisboa.pt";
         $user = "ist187077";
         $pass = "qrtr9733";
-        $dsn = "mysql:host=$host;dbname=$user";*/
+        $dsn = "mysql:host=$host;dbname=$user";
     
-        $host = "localhost";
+        /*$host = "localhost";
         $user = "root";
         $pass = "";
         $db = "SIBD";
-        $dsn = "mysql:host=$host;dbname=$db";
+        $dsn = "mysql:host=$host;dbname=$db";*/
 
         try{
             $conn = new PDO($dsn, $user, $pass);
@@ -42,13 +42,15 @@
                 </div>
                 <div class="form-group">
                     <label for="medication">Medication Name/Medication Lab:</label>
-                    <select class="form-control" name="medication_name">
-                        <option selected disabled>--Choose an option--</option>
-                    <?php
-                        foreach ($med as $row){ ?>
-                            <option><?php echo $row['medication_name'] ?>/<?php echo $row['medication_lab'] ?> </option>
-                        <?php } ?>
-                    </select>
+                    <select class="form-control" name="medication">
+                            <option selected disabled>--Choose an option--</option>
+                        <?php
+                            foreach ($med as $row){
+                            $medName = $row['medication_name'];
+                            $medLab = $row['medication_lab'];
+                                echo("<option> $medName/$medLab</option>"); 
+                            } ?>
+                        </select>
                 </div>
                 <div class="form-group">
                     <label for="presc_id">Prescription ID:</label>
