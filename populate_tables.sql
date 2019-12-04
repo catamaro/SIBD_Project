@@ -380,7 +380,10 @@ insert into procedure_radiology values ('Sealants',								'433-46-4246', '2017-
 /*INSERT TEETH*/                                                                
 insert into teeth values (3, 1,'top right central incisor');
 insert into teeth values (2, 8,'top right lateral incisor');
-insert into teeth values (1, 6,'top right cuspid,');
+insert into teeth values (1, 6,'top right cuspid');
+insert into teeth values (1, 2,'top left lateral incisor');
+insert into teeth values (2, 4,'top left cuspid');
+
 
 /*INSERT PROCEDURE_CHARTING*/
 /* procedure_name_ | VAT_doctor | date_timestamp | quadrant | number | procedure_charting_descp | measure*/
