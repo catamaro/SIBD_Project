@@ -121,10 +121,6 @@
                     <label for="prescription_description">Prescription Description:</label>
                     <input type="text" class="form-control" name="prescription_description">
                 </div>
-                <div class="form-group">        
-                    <label for="procedure">Dental Charting:</label>
-                    <a href="create_dental_charting.php?date=<?php echo $date?>&VAT_doctor=<?php echo $vat_doctor?>" type="button" class="btn btn-light form-control">Add results</a>
-                </div> 
                 <input type="submit" class="btn btn-info" value="Insert"/>
             </form>
         </div>
