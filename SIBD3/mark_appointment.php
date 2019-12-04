@@ -30,16 +30,21 @@ $date = $_REQUEST['date'];
 $time= $_REQUEST['time'];
 $combinedDT = date('Y-m-d H:i:s', strtotime("$date $time"));
 
-$dsql = "SELECT e.employee_VAT, e.employee_name
+$dsql = $conn->prepare("SELECT e.employee_VAT, e.employee_name
 		FROM employee AS e, doctor AS d
 		WHERE d.VAT_doctor = e.employee_VAT
 		AND d.VAT_doctor NOT IN(
 		SELECT a.VAT_doctor
 		FROM appointment a
-		WHERE '$combinedDT' BETWEEN  a.date_timestamp AND DATE_ADD(a.date_timestamp, INTERVAL 1 HOUR));";
+		WHERE :combinedDT =  a.date_timestamp);");
 
-$drows = $conn->query($dsql);
-$d_rows = $drows->rowCount();
+$dsql->bindParam(':combinedDT',	 $combinedDT);
+
+$dsql->execute();
+
+$drows =  $dsql->fetchAll();
+
+$d_rows = $dsql->rowCount();
 
 if($d_rows > 0): ?>
   <h2>Let's mark the appointment </h2>
@@ -73,15 +78,17 @@ if($d_rows > 0): ?>
 <input hidden type="text" name="date_timestamp" value="<?php echo $combinedDT ?>" />
 <input hidden type="text" name="client_VAT" value="<?php echo $client_VAT ?>" />
  <p>Appointment description: <input required type="text" name="descp"/></p>
- <p><input type="submit" value="Create appointment"></p>
+ <p><input type="submit" class="btn btn-info" value="Create appointment"></p>
  </form>
   <?php
 else: 
  echo("<p>No doctor avaiable. Click to select other time</p>");?>
  
 <form action="client_page.php" method="post">
+  
 	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>>
 	<p><input type="submit" value="Change time"/></p>
+
 </form>
   <?php endif;?>
 
