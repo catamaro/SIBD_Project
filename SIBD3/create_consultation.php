@@ -2,11 +2,16 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <body>  
         <?php
-        $host = "localhost";
+        /*$host = "localhost";
         $user = "root";
         $pass = "";
         $db = "SIBD";
-        $dsn = "mysql:host=$host;dbname=$db";
+        $dsn = "mysql:host=$host;dbname=$db";*/
+
+        $host = "db.tecnico.ulisboa.pt";
+        $user = "ist187077";
+        $pass = "qrtr9733";
+        $dsn = "mysql:host=$host;dbname=$user";
     
         try{
             $conn = new PDO($dsn, $user, $pass);
@@ -24,7 +29,7 @@
                         WHERE n.VAT_nurse = ca.VAT_nurse AND ca.VAT_nurse NOT IN (SELECT ca.VAT_nurse 
                         FROM consultation_assistant AS ca, appointment AS a 
                         WHERE a.date_timestamp = ca.date_timestamp AND a.VAT_doctor = ca.VAT_doctor 
-                        AND '$date' = a.date_timestamp";
+                        AND a.date_timestamp = '$date')";
         $dcID_sql = "SELECT ID FROM diagnostic_code";
         $VAT_nurse = $conn->query($VATnurse_sql);
         $dcID = $conn->query($dcID_sql);

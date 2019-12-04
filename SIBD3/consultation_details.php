@@ -2,11 +2,16 @@
 <body>
 <?php
  
- $host = "localhost";
- $user = "root";
- $pass = "";
- $db = "SIBD";
- $dsn = "mysql:host=$host;dbname=$db";
+   /*$host = "localhost";
+    $user = "root";
+    $pass = "";
+    $db = "SIBD";
+    $dsn = "mysql:host=$host;dbname=$db";*/
+
+    $host = "db.tecnico.ulisboa.pt";
+    $user = "ist187077";
+    $pass = "qrtr9733";
+    $dsn = "mysql:host=$host;dbname=$user";
  
  try{
 	 $conn = new PDO($dsn, $user, $pass);
@@ -30,19 +35,19 @@
                       WHERE p.date_timestamp = :date_timestamp AND p.VAT_doctor = :vat_doctor AND p.VAT_doctor = cd.VAT_doctor
                       AND p.date_timestamp = cd.date_timestamp AND cd.VAT_doctor = p.VAT_doctor AND cd.ID = p.ID");
   
-      $condetsql->bindParam(':date_timestamp',	 $date);
-      $condetsql->bindParam(':vat_doctor',	 $doctor);
-      $dcdetsql->bindParam(':date_timestamp',	 $date);
-      $dcdetsql->bindParam(':vat_doctor',	 $doctor);
-      $prescdetsql->bindParam(':date_timestamp',	 $date);
-      $prescdetsql->bindParam(':vat_doctor',	 $doctor);
-		  $condetsql->execute();
+      $condetsql->bindParam(':date_timestamp', $date);
+      $condetsql->bindParam(':vat_doctor', $doctor);
+      $dcdetsql->bindParam(':date_timestamp', $date);
+      $dcdetsql->bindParam(':vat_doctor', $doctor);
+      $prescdetsql->bindParam(':date_timestamp', $date);
+      $prescdetsql->bindParam(':vat_doctor', $doctor);
+	  $condetsql->execute();
       $dcdetsql->execute();
       $prescdetsql->execute();
 
       $condetails =  $condetsql->fetchAll();
-      $dcdetails =  $condetsql->fetchAll();
-      $prescdetails =  $condetsql->fetchAll();
+      $dcdetails =  $dcdetsql->fetchAll();
+      $prescdetails =  $prescdetsql->fetchAll();
 
         echo("<h2>Consultation details:</h2>");
         foreach ($condetails as $row){
