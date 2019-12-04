@@ -69,14 +69,25 @@
         }
     ?>
 
-        <form action="create_dental_charting.php?VAT_doctor=<?php echo $vat_doctor?>&date=<?php echo $date?>" method="post">
-            <p><input type="submit" class="btn btn-info" value="Add procedure"/></p>
-        </form>
-        <form action="create_prescription.php?id=<?php echo $diagnostic_id?>&vat_doctor=<?php echo $vat_doctor?>&date=<?php echo $date?>" method="post">
-            <p><input type="submit" class="btn btn-info" value="Add prescription"/></p>
-        </form>
-        <form action="client.php" method="post">
-            <p><input type="submit" class="btn btn-info" value="Go to search"/></p>
-        </form>      
+        <div class="row">
+            <div class="col-2">
+                <form action="create_dental_charting.php?VAT_doctor=<?php echo $vat_doctor?>&date=<?php echo $date?>" method="post">
+                    <p><input type="submit" class="btn btn-info" value="  Add procedure  "/></p>
+                </form>
+            </div>
+            <div class="col-2">
+                <form action="create_prescription.php?id=<?php echo $diagnostic_id?>&vat_doctor=<?php echo $vat_doctor?>&date=<?php echo $date?>" method="post">
+                    <p><input type="submit" class="btn btn-info" value="Add prescription "/></p>
+                </form>
+            </div>
+            <div class="col-2">
+                <form action="client.php" method="post">
+                    <p><input type="submit" class="btn btn-info" value="  Go to search  "/></p>
+                </form> 
+            </div>
+        </div>
+    
+        
+             
     </body>
 </html>
