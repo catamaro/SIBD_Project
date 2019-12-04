@@ -21,16 +21,16 @@
 
 
         $vat_doctor = $_REQUEST['VAT_doctor'];
-        $date = $_REQUEST['date'];
+        $date_timestamp = $_REQUEST['date'];
         $proc_name = $_REQUEST['proc_name'];
         $proc_dscp = $_REQUEST['proc_dscp'];
         $num_teeth = $_REQUEST['num_teeth'];
         $measure = array($num_teeth);
-        $description = array($num_teeth);
+        $dscp = array($num_teeth);
         for($i = 1; $i <= $num_teeth; $i++){
             if( $_REQUEST["measure$i"]!=NULL && $_REQUEST["dscp$i"]!=NULL ){
                 $measure[$i] = $_REQUEST["measure$i"];
-                $description[$i] = $_REQUEST["dscp$i"];
+                $dscp[$i] = $_REQUEST["dscp$i"];
             }
         }
         $teeth_sql = "SELECT quadrant, number, teeth_name FROM teeth";
@@ -41,27 +41,43 @@
 
         try{
             $conn->beginTransaction();
+            $procedure_sql = $conn->prepare("INSERT INTO procedure_in_consultation VALUES(:proc_name, :vat_doctor, :date_timestamp,:proc_dscp)");
 
-            $procedure_sql = "INSERT INTO procedure_in_consultation VALUES('$proc_name', '$vat_doctor', '$date','$proc_dscp')";
-            if ($conn->query($procedure_sql) == TRUE) {
-                echo("New record for procedure in consultation created successfully");
-            } else {
-                echo("Error: " . $procedure_sql . "<br>" . $conn->error);
-            }
+            $procedure_sql->bindParam(':proc_name', $proc_name);
+            $procedure_sql->bindParam(':vat_doctor', $vat_doctor);
+            $procedure_sql->bindParam(':date_timestamp', $date_timestamp);
+            $procedure_sql->bindParam(':proc_dscp', $proc_dscp);
+
+            $procedure_sql->execute();
 
             $i = 1;
             foreach($teeth as $row){
                 if(isset($measure[$i])){
-                    $number = $row['number'];       
-                    $quadrant = $row['quadrant'];                                 
-                    $measurement_sql = "INSERT INTO procedure_charting VALUES('$proc_name', '$vat_doctor', $date, '$quadrant', '$number', '$description[$i]', '$measure[$i]');";
+                    $tooth_number = $row['number'];       
+                    $quadrant = $row['quadrant'];  
+                    $dscp_aux = $dscp[$i];
+                    $measure_aux = $measure[$i];
+
+                    $measurement_sql = $conn->prepare("INSERT INTO procedure_charting VALUES(:proc_name, :vat_doctor, :date_timestamp, :quadrant, :tooth_number, :dscp, :measure);");
+                    
+                    $measurement_sql->bindParam(':proc_name', $proc_name);
+                    $measurement_sql->bindParam(':vat_doctor', $vat_doctor);
+                    $measurement_sql->bindParam(':date_timestamp', $date_timestamp);
+                    $measurement_sql->bindParam(':quadrant', $quadrant);
+                    $measurement_sql->bindParam(':tooth_number', $tooth_number);
+                    $measurement_sql->bindParam(':dscp', $dscp_aux);
+                    $measurement_sql->bindParam(':measure', $measure_aux);
+
+                    $measurement_sql->execute();
                 }
                 $i+=1;
             }
 
+            echo("something went good");
             $conn->commit();
 
         }catch(Exception $e){
+            echo("something went wrong");
             $conn->roolback();
         }
 
