@@ -27,22 +27,26 @@
         $p = $_REQUEST['p'];
         $vat_nurse = $_REQUEST['vat_nurse'];
         $diagnostic_id = $_REQUEST['diagnostic_id'];
-        $medication_name = $_REQUEST['medication_name'];
-        $medication_lab = $_REQUEST['medication_lab'];
-        $presc_id = $_REQUEST['presc_id'];
-        $dosage = $_REQUEST['dosage'];
-        $prescription_description = $_REQUEST['prescription_description'];
         $sql = "INSERT INTO consultation VALUES ('$vat_doctor', '$date', '$s', '$o', '$a', '$p')";
       
         if ($conn->query($sql) == TRUE) {
-            echo("New record for consultation created successfully");
+            echo("<h2>Consultation inserted:</h2>");
+            echo("<p>VAT Doctor: $vat_doctor </p>");
+            echo("<p>Date: $date </p>");
+            echo("<p>S: $s </p>");
+            echo("<p>O: $o </p>");
+            echo("<p>A: $a </p>");
+            echo("<p>P: $p </p>");
         } else {
             echo("Error: " . $sql . "<br>" . $conn->error);
         }
         if (!empty($vat_nurse)){
             $assist_sql = "INSERT INTO consultation_assistant VALUES ('$vat_doctor', '$date', '$vat_nurse')";
             if ($conn->query($assist_sql) == TRUE) {
-                echo("New record for nurse created successfully");
+                echo("<h2>Consultation assistent inserted:</h2>");
+                echo("<p>VAT Doctor: $vat_doctor </p>");
+                echo("<p>Date: $date </p>");
+                echo("<p>VAT Nurse: $vat_nurse </p>");
             } else {
                 echo("Error: " . $assist_sql . "<br>" . $conn->error);
             }
@@ -50,31 +54,20 @@
         if (!empty($diagnostic_id)){
             $diagnostic_sql = "INSERT INTO consultation_diagnostic VALUES ('$vat_doctor', '$date', '$diagnostic_id')";
             if ($conn->query($diagnostic_sql) == TRUE) {
-                echo("New record for diagnostic created successfully");
+                echo("<h2>Diagnostic inserted:</h2>");
+                echo("<p>VAT Doctor: $vat_doctor </p>");
+                echo("<p>Date: $date </p>");
+                echo("<p>ID: $diagnostic_id </p>");
             } else {
                 echo("Error: " . $diagnostic_sql . "<br>" . $conn->error);
             }
         }
-        if (!empty($medication_name)){
-            $med_sql = "INSERT INTO medication VALUES ('$medication_name', '$medication_lab')";
-            if ($conn->query($med_sql) == TRUE) {
-                echo("New record for medication created successfully");
-            } else {
-                echo("Error: " . $med_sql . "<br>" . $conn->error);
-            }
-        }
-        if (!empty($presc_id)){
-            $presc_sql = "INSERT INTO prescription VALUES ('$medication_name', '$medication_lab', '$vat_doctor', '$date', '$presc_id', '$dosage', '$prescription_description')";
-            if ($conn->query($presc_sql) == TRUE) {
-                echo("New record for prescription created successfully");
-            } else {
-                echo("Error: " . $presc_sql . "<br>" . $conn->error);
-            }
-        }
     ?>
-
+        <form action="create_prescription.php?id=<?php echo $diagnostic_id?>&vat_doctor=<?php echo $vat_doctor?>&date=<?php echo $date?>" method="post">
+            <p><input type="submit" class="btn btn-info" value="Add prescription"/></p>
+        </form>
         <form action="client.php" method="post">
             <p><input type="submit" class="btn btn-info" value="Go to search"/></p>
-        </form>
+        </form>      
     </body>
 </html>
