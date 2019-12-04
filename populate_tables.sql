@@ -1,3 +1,5 @@
+USE SIBD;
+
 /*INSERT EMPLOYEE*/
 /*employee_VAT | employee_name | employee_birth_date | employee_street | employee_city | employee_zip | employee_IBAN | employee_salary |*/
 INSERT INTO employee VALUES ('628-22-9602', 'Cassius Lydiatt', '1967-8-31', 'Weeping Birch', 'Banquero', '3303', 'GR55 2129 201W VPZF 9YEU I2SS FJI', 1164.12);
@@ -358,7 +360,7 @@ insert into procedure_ values ('Extraction', 'Teeth Removal');
 insert into procedure_ values ('maxillary molar periapical radiograph', 'Radiography Exam');
 insert into procedure_ values ('Gum Surgery', 'Surgery');
 insert into procedure_ values ('Sealants', 'Sealants application');
-insert into procedure_ values ('Teeth Whitening', 'in-office bleaching');
+insert into procedure_ values ('Dental Charting', 'in-office bleaching');
 
 /*INSERT PROCEDURE_IN_CONSULTATION*/
 /* procedure_name_ | VAT_doctor | date_timestamp | p_in_c_description*/
@@ -366,7 +368,7 @@ insert into procedure_in_consultation values ('Extraction',								'204-53-2647'
 insert into procedure_in_consultation values ('maxillary molar periapical radiograph',	'120-69-0626', '2005-1-2 12:14:25',  'descp2');
 insert into procedure_in_consultation values ('Gum Surgery', 							'604-24-1006', '2016-6-15 13:18:41','descp3');
 insert into procedure_in_consultation values ('Sealants', 								'433-46-4246', '2017-1-4 9:38:39',   'descp4');
-insert into procedure_in_consultation values ('Teeth Whitening',						'204-53-2647', '2010-7-27 9:27:06',  'descp5');
+insert into procedure_in_consultation values ('Dental Charting',						'204-53-2647', '2010-7-27 9:27:06',  'descp5');
 insert into procedure_in_consultation values ('maxillary molar periapical radiograph',	'120-69-0626', '2006-3-30 15:32:16','descp3'); 
 /*INSERT PROCEDURE_RADIOLOGY*/
 /*procedure_name_ | VAT_doctor  | date_timestamp | file_path*/
@@ -374,19 +376,18 @@ insert into procedure_radiology values ('Extraction',							'204-53-2647', '2013
 insert into procedure_radiology values ('maxillary molar periapical radiograph','120-69-0626', '2005-1-2 12:14:25', 'AugueLuctus.ppt');
 insert into procedure_radiology values ('Gum Surgery',							'604-24-1006', '2016-6-15 13:18:41','Nulla.txt');
 insert into procedure_radiology values ('Sealants',								'433-46-4246', '2017-1-4 9:38:39',   'NullaSed.xls');
-insert into procedure_radiology values ('Teeth Whitening',						'204-53-2647', '2010-7-27 9:27:06', 'AcNequeDuis.mpeg');
-                                                                                
+
 /*INSERT TEETH*/                                                                
 insert into teeth values (3, 1,'top right central incisor');
 insert into teeth values (2, 8,'top right lateral incisor');
-insert into teeth values (1, 6,'top right cuspid,');
+insert into teeth values (1, 6,'top right cuspid');
+insert into teeth values (1, 2,'top left lateral incisor');
+insert into teeth values (2, 4,'top left cuspid');
+
 
 /*INSERT PROCEDURE_CHARTING*/
 /* procedure_name_ | VAT_doctor | date_timestamp | quadrant | number | procedure_charting_descp | measure*/
-insert into procedure_charting values ('Extraction',							'204-53-2647', '2013-7-16 13:12:32', 3, 1,'descp1', 2);
-insert into procedure_charting values ('maxillary molar periapical radiograph',	'120-69-0626', '2005-1-2 12:14:25', 	2, 8,'descp2', 3);
-insert into procedure_charting values ('Gum Surgery',							'604-24-1006', '2016-6-15 13:18:41',1, 6,'descp3', 5);
-insert into procedure_charting values ('Sealants',								'433-46-4246', '2017-1-4 9:38:39',  3, 1,'descp4', 2);
-insert into procedure_charting values ('Teeth Whitening',						'204-53-2647', '2010-7-27 9:27:06', 2, 8,'descp5', 5);
+insert into procedure_charting values ('Dental Charting',						'204-53-2647', '2010-7-27 9:27:06', 3, 1,'descp1', 2);
+insert into procedure_charting values ('Dental Charting',						'204-53-2647', '2010-7-27 9:27:06', 2, 8,'descp5', 5);
                                                                                
                                                                                

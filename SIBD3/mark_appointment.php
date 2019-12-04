@@ -84,9 +84,9 @@ if($d_rows > 0): ?>
 else: 
  echo("<p>No doctor avaiable. Click to select other time</p>");?>
  
-<form action="client_page.php" method="post">
+<form action="client_page.php" method="post"> 
 	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>>
-	<p><input type="submit" class="btn btn-info" value="Change time"/></p>
+	<p><input type="submit" value="Change time"/></p>
 </form>
   <?php endif;?>
 

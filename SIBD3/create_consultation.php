@@ -23,7 +23,7 @@
             exit();
         }
 
-        $doctor = $_REQUEST['VAT_doctor'];
+        $vat_doctor = $_REQUEST['VAT_doctor'];
         $date = $_REQUEST['date_timestamp']; 
         $VATnurse_sql = "SELECT DISTINCT n.VAT_nurse FROM nurse AS n, consultation_assistant as ca 
                         WHERE n.VAT_nurse = ca.VAT_nurse AND ca.VAT_nurse NOT IN (SELECT ca.VAT_nurse 
@@ -37,9 +37,10 @@
         <div class="container">
             <h2>New Consultation:</h2>
             <form action="insert_consultation.php" method="post">
+                
                 <div class="form-group">
                     <label for="vat_doctor">VAT_Doctor:</label>
-                    <input readonly type="text" class="form-control" name="vat_doctor" value="<?php echo($doctor) ?>" >
+                    <input readonly type="text" class="form-control" name="vat_doctor" value="<?php echo($vat_doctor) ?>" >
                 </div>
                 <div class="form-group">
                     <label for="date">Date:</label>
@@ -77,7 +78,7 @@
                         <option selected disabled>--Choose an option--</option>
                     <?php
                         foreach ($dcID as $row){ ?>
-                            <option><?php echo $row['ID'] ?> </option>
+                            <option><?php echo $row['ID']?> </option>
                         <?php } ?>
                     </select>
                 </div>
