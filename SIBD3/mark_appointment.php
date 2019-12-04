@@ -4,16 +4,16 @@
  <body>
 <?php
 
-$host = "localhost";
+/*$host = "localhost";
 $user = "root";
 $pass = "";
 $db = "SIBD";
-$dsn = "mysql:host=$host;dbname=$db";
+$dsn = "mysql:host=$host;dbname=$db";*/
 
- /*$host = "db.tecnico.ulisboa.pt";
+ $host = "db.tecnico.ulisboa.pt";
  $user = "ist187077";
  $pass = "qrtr9733";
- $dsn = "mysql:host=$host;dbname=$user";*/
+ $dsn = "mysql:host=$host;dbname=$user";
 
  try{
 	 $conn = new PDO($dsn, $user, $pass);
@@ -84,11 +84,9 @@ if($d_rows > 0): ?>
 else: 
  echo("<p>No doctor avaiable. Click to select other time</p>");?>
  
-<form action="client_page.php" method="post">
-  
+<form action="client_page.php" method="post"> 
 	<input hidden type="text" name="client_VAT" value=<?php echo $client_VAT ?>>
 	<p><input type="submit" value="Change time"/></p>
-
 </form>
   <?php endif;?>
 
