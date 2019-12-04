@@ -50,6 +50,11 @@
 
             $procedure_sql->execute();
 
+            echo("<h2>Procedure inserted:</h2>");
+            echo("<p>VAT Doctor: $vat_doctor </p>");
+            echo("<p>Date: $date_timestamp </p>");
+            echo("<p>Description: $proc_dscp </p>");
+
             $i = 1;
             foreach($teeth as $row){
                 if(isset($measure[$i])){
@@ -68,23 +73,29 @@
                     $measurement_sql->bindParam(':dscp', $dscp_aux);
                     $measurement_sql->bindParam(':measure', $measure_aux);
 
+
+                    echo("<h2>Measurements done:</h2>");
+                    echo("<p>Tooth: $quadrant|$tooth_number</p>");
+                    echo("<p>Description: $dscp_aux </p>");
+                    echo("<p>Measurement: $measure_aux </p>");
+                    echo("</br>");
+
                     $measurement_sql->execute();
                 }
                 $i+=1;
             }
 
-            echo("something went good");
             $conn->commit();
 
         }catch(Exception $e){
-            echo("something went wrong");
+            echo("Error: " . $conn->error);
             $conn->roolback();
         }
 
         ?>
 
-        <div class="form-group">        
-            <a href="create_consultation.php?date_timestamp=<?php echo $date?>&VAT_doctor=<?php echo $vat_doctor?>" type="button" class="btn btn-info">Insert</a>
-        </div>        
+        <form action="client.php" method="post">
+            <p><input type="submit" class="btn btn-info" value="Go to search"/></p>
+        </form>        
     </body>
 </html>
