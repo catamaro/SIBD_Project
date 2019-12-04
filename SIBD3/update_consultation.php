@@ -23,7 +23,7 @@
                         WHERE n.VAT_nurse = ca.VAT_nurse AND ca.VAT_nurse NOT IN (SELECT ca.VAT_nurse 
                         FROM consultation_assistant AS ca, appointment AS a 
                         WHERE a.date_timestamp = ca.date_timestamp AND a.VAT_doctor = ca.VAT_doctor 
-                        AND '$date' = a.date_timestamp";
+                        AND a.date_timestamp = '$date')";
         $soap_sql = "SELECT SOAP_S, SOAP_O, SOAP_A, SOAP_P FROM consultation WHERE VAT_doctor = '$doctor' AND date_timestamp = '$date'";
         $dcID_sql = "SELECT ID FROM diagnostic_code";
         $med_sql = "SELECT medication_name, medication_lab FROM medication";
