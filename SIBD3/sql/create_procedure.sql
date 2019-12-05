@@ -1,5 +1,3 @@
-use SIBD;
-
 delimiter $$
 drop procedure if exists raise_doctor;
 
