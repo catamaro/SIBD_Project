@@ -1,12 +1,20 @@
-use SIBD;
+delimiter $$
+drop procedure if exists raise_doctor;
 
-create procedure raise_doctor (in x integer)
+create procedure raise_doctor (x integer)
 
 begin
-    update employee set employee_salary =
+    update employee e, permanent_doctor p
+
+    set e.employee_salary =
+
         (select employee_salary * if(count(distinct c.VAT_doctor, c.date_timestamp) > 100, 1.1, 1.05)
-         from permanent_doctor, consultation c, employee
-         where years_of_experience > x and VAT_doctor = VAT_permanent
-         group by VAT_doctor);
-end
+         from consultation c, permanent_doctor p
+         where c.VAT_doctor = p.VAT_permanent AND p.years_of_experience > x
+         group by c.VAT_doctor)
+
+    where e.employee_VAT = p.VAT_permanent AND p.years_of_experience > x;
+end$$
+
+delimiter ;
 
